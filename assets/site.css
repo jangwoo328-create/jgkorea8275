@@ -471,4 +471,4 @@ body.has-dock{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 .doc-creds li,.doc-creds li{font-size:17px}
 .career li.w500{font-weight:500}
 .tx details p.w500{font-weight:500}
-@media (max-width:380px){.doc-creds{gap:6px 9px}.doc-creds li+li::before{display:none}}
+@media (max-width:380px){.doc-creds li{font-size:16px}.doc-creds li+li::before{margin:0 7px}}
