@@ -482,3 +482,8 @@ body.has-dock{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 #hours.flash{animation:hoursFlash 1.8s ease-out}
 @keyframes hoursFlash{0%,25%{background-color:rgba(196,160,82,.16);box-shadow:0 0 0 10px rgba(196,160,82,.16)}100%{background-color:transparent;box-shadow:0 0 0 10px transparent}}
 @media (prefers-reduced-motion:reduce){#hours.flash{animation:none}}
+.kmap{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#efece5;min-height:120px}
+.kmap .root_daum_roughmap{width:100%!important;border:0!important;border-radius:0!important;box-sizing:border-box}
+.kmap .root_daum_roughmap .wrap_map{width:100%!important}
+.kmap-fallback{display:none}
+.kmap-off{display:none}
