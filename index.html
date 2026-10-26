@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Noto+Serif+KR:wght@500&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261025">
+<link rel="stylesheet" href="assets/site.css?v=20261026">
 </head>
 <body class="has-dock" id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -87,7 +87,7 @@
       <p class="hero-sub"><b>한의학박사·한방재활의학과 전문의</b>가 직접 진료합니다. 예약 없이 편한 시간에 들러 주세요.</p>
       <div class="hero-cta">
         <a class="btn-gold" href="tel:0517278275"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>전화 문의하기<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></a>
-        <a class="btn-line" href="#visit">진료시간 · 오시는 길</a>
+        <a class="btn-line" href="#hours">진료시간 · 오시는 길</a>
       </div>
     </div>
     <div class="hero-photo">
@@ -97,8 +97,8 @@
   <div class="hero-info">
     <div class="wrap">
       <ul>
-        <li><a href="#visit"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span><b>진료시간</b></span></a></li>
-        <li><a href="https://map.naver.com/p/entry/place/13303762" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span><b>오시는 길</b></span></a></li>
+        <li><a href="#hours"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span><b>진료시간</b></span></a></li>
+        <li><a href="#visit"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span><b>오시는 길</b></span></a></li>
         <li><a href="#parking"><svg class="ic" aria-hidden="true"><use href="#i-park"/></svg><span><b>주차 안내</b></span></a></li>
       </ul>
     </div>
@@ -228,14 +228,15 @@
     <p class="eyebrow">08. 오시는 길</p>
     <h2>예약 없이, 편하게 오세요</h2>
     <div class="visit">
-      <a class="vmap" href="https://map.naver.com/p/entry/place/13303762" target="_blank" rel="noopener">
-        <img src="images/40ad143c.jpg" alt="정관고려한의원 2층 입구 간판" width="960" height="640" loading="lazy">
-        <span class="pin"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>2층 정관고려한의원 입구</span>
-        <span class="open">네이버 지도에서 길찾기<svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></span>
-      </a>
+      <div class="vmap-wrap">
+        <a class="vmap is-map" href="https://map.naver.com/p/entry/place/13303762" target="_blank" rel="noopener" aria-label="정관고려한의원 약도 – 네이버 지도에서 크게 보기">
+          <img src="images/map.png" alt="정관고려한의원 약도: 정관4로 37, 제일프라자 파리바게뜨 건물 2층. 정관로와 정관4로 교차로 동쪽, 정관 주민자치회관 건너편이며 한의원 앞에 버스정류장이 있습니다." width="1600" height="1229" loading="lazy">
+        </a>
+        <a class="vmap-open" href="https://map.naver.com/p/entry/place/13303762" target="_blank" rel="noopener">네이버 지도에서 길찾기<svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
+      </div>
       <ul class="vinfo">
         <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><div><h3>주소</h3><p>부산시 기장군 정관읍 정관4로 37 2층 정관고려한의원</p></div></li>
-        <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><h3>진료시간</h3>
+        <li id="hours"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><h3>진료시간</h3>
           <table class="hours"><tbody>
             <tr class="main"><th scope="row">평일</th><td>오전 9시 – 오후 7시</td></tr>
             <tr><th scope="row">( 점심시간</th><td>오후 1시 – 오후 2시 )</td></tr>
@@ -275,7 +276,7 @@
 </footer>
 <div class="dock" role="navigation" aria-label="빠른 연락">
   <a class="dock-call" href="tel:0517278275"><i><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></i><span><small>전화 바로 연결</small><b>051-727-8275</b></span></a>
-  <a class="dock-btn" href="#visit"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>진료시간</a>
+  <a class="dock-btn" href="#hours"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>진료시간</a>
   <a class="dock-btn" href="https://map.naver.com/p/entry/place/13303762" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg>길찾기</a>
 </div>
 <div class="fab" id="fab" hidden>
@@ -286,7 +287,7 @@
   </nav>
   <button type="button" class="fab-btn" aria-expanded="false" aria-controls="fab-menu"><svg class="ic m" aria-hidden="true"><use href="#i-menu"/></svg><svg class="ic x" aria-hidden="true"><use href="#i-x"/></svg><span>메뉴</span></button>
 </div>
-<script src="assets/site.js?v=20261025"></script>
+<script src="assets/site.js?v=20261026"></script>
 <!-- ANALYTICS:START -->
 <!-- Naver Analytics -->
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>

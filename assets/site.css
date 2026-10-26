@@ -263,6 +263,11 @@ a.area-dark:hover{background:var(--ink-3);border-color:var(--ink-3)}
 .vmap .pin .ic{width:15px;height:15px;color:var(--gold)}
 .vmap .open{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:center;align-items:center;gap:6px;padding:12px;border-radius:999px;background:var(--ink);color:#f6f0e6;font-size:14px;font-weight:700}
 .vmap .open .ic{width:15px;height:15px;color:var(--gold)}
+.vmap-wrap{display:flex;flex-direction:column;gap:12px;min-width:0}
+.vmap.is-map{aspect-ratio:auto;background:#f3efe6;border:1px solid var(--line,rgba(23,21,17,.1))}
+.vmap.is-map img{height:auto;object-fit:contain}
+.vmap-open{display:flex;justify-content:center;align-items:center;gap:6px;padding:13px;border-radius:999px;background:var(--ink);color:#f6f0e6;font-size:14px;font-weight:700;text-decoration:none}
+.vmap-open .ic{width:15px;height:15px;color:var(--gold)}
 .vinfo{list-style:none;margin:0;padding:0;display:grid;gap:0}
 .vinfo>li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
 .vinfo>li:first-child{padding-top:0}
@@ -472,3 +477,8 @@ body.has-dock{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
 .career li.w500{font-weight:500}
 .tx details p.w500{font-weight:500}
 @media (max-width:380px){.doc-creds li{font-size:16px}.doc-creds li+li::before{margin:0 7px}}
+
+#hours{scroll-margin:96px 0;border-radius:14px;transition:background-color .6s ease}
+#hours.flash{animation:hoursFlash 1.8s ease-out}
+@keyframes hoursFlash{0%,25%{background-color:rgba(196,160,82,.16);box-shadow:0 0 0 10px rgba(196,160,82,.16)}100%{background-color:transparent;box-shadow:0 0 0 10px transparent}}
+@media (prefers-reduced-motion:reduce){#hours.flash{animation:none}}

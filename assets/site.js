@@ -177,4 +177,25 @@
     document.addEventListener('click', function (e) { if (!fab.contains(e.target)) setFab(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setFab(false); });
   }
+
+  // 진료시간 링크: 진료시간 안내를 화면 가운데로
+  var hours = document.getElementById('hours');
+  if (hours) {
+    var showHours = function (smooth) {
+      try { hours.scrollIntoView({ block: 'center', behavior: smooth && !reduce ? 'smooth' : 'auto' }); }
+      catch (e) { hours.scrollIntoView(); }
+      hours.classList.remove('flash'); void hours.offsetWidth; hours.classList.add('flash');
+    };
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href="#hours"]');
+      if (!a) return;
+      e.preventDefault();
+      if (hd) hd.removeAttribute('data-state');
+      try { history.replaceState(null, '', '#hours'); } catch (x) {}
+      showHours(true);
+    });
+    if (location.hash === '#hours') {
+      window.addEventListener('load', function () { setTimeout(function () { showHours(false); }, 60); });
+    }
+  }
 })();
