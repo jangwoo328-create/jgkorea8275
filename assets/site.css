@@ -186,7 +186,7 @@ a.area-dark:hover{background:var(--ink-3);border-color:var(--ink-3)}
 .sec .doc-title{margin-top:10px;display:flex;align-items:baseline;gap:12px;font-size:25px;color:var(--ink);line-height:1.15;letter-spacing:-.035em}
 .doc-title small{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0}
 .doc-creds{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 0}
-.doc-creds li{display:inline-flex;align-items:center;gap:7px;font-size:16px;font-weight:700;color:var(--gold-deep)}
+.doc-creds li{display:inline-flex;align-items:center;gap:4px;font-size:16px;font-weight:700;color:var(--gold-deep)}
 .doc-creds li+li::before{content:"";width:1px;height:14px;background:#d6c79f;margin:0 7px}
 .doc-creds .ic{width:18px;height:18px;stroke-width:1.6}
 .doc-sub{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:.02em}
