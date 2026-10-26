@@ -1,6 +1,8 @@
 # 정관고려한의원 홈페이지 (jgkorea8275.co.kr)
 
 - `index.html` : 홈페이지 본문 (이 파일을 고치면 내용이 바뀝니다)
+- `column-1.html` : 건강 칼럼 1편
+- `assets/site.css`, `assets/site.js` : 두 페이지가 함께 쓰는 디자인과 동작(메뉴, 회전 사진 등)
 - `images/`, `videos/` : 사진과 방송 영상
 - `CNAME` : 연결할 도메인(jgkorea8275.co.kr). 지우거나 고치지 마세요.
 - `robots.txt`, `sitemap.xml` : 검색 노출용 파일
