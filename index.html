@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=Noto+Serif+KR:wght@500&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261026">
+<link rel="stylesheet" href="assets/site.css?v=20261026b">
 </head>
 <body class="has-dock" id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -232,20 +232,24 @@
         <a class="vmap is-map" href="https://map.kakao.com/link/search/%EC%A0%95%EA%B4%80%EA%B3%A0%EB%A0%A4%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener" aria-label="정관고려한의원 약도 – 카카오맵에서 크게 보기">
           <img src="images/map.png" alt="정관고려한의원 약도: 정관4로 37, 제일프라자 파리바게뜨 건물 2층. 정관로와 정관4로 교차로 동쪽, 정관 주민자치회관 건너편이며 한의원 앞에 버스정류장이 있습니다." width="1600" height="1229" loading="lazy">
         </a>
-        <div class="kmap" aria-label="카카오맵 – 손가락으로 움직이고 확대할 수 있습니다">
-          <div id="daumRoughmapContainer1792999388607" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        <div class="kmap" id="kmap" aria-label="카카오맵 – 손가락으로 움직이고 확대할 수 있습니다">
           <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://t1.kakaocdn.net/kakaomapweb/roughmap/loader/prod/roughmapLoader.js"></script>
           <script charset="UTF-8">
             (function () {
-              var box = document.getElementById('daumRoughmapContainer1792999388607');
-              var w = Math.round((box && box.parentNode.clientWidth) || 640);
-              var h = Math.max(260, Math.min(380, Math.round(w * 0.66)));
+              var wrap = document.getElementById('kmap');
+              var w = Math.round(wrap.clientWidth || 640);
+              var m = (window.innerWidth || w) < 768;
+              var code = m ? { ts: '1792999950938', key: '3wwyy3xqi6p' } : { ts: '1792999388607', key: '3wwmuaipsyb' };
+              var h = m ? Math.max(260, Math.round(w * 0.78)) : Math.max(300, Math.min(380, Math.round(w * 0.66)));
+              var box = document.createElement('div');
+              box.id = 'daumRoughmapContainer' + code.ts;
+              box.className = 'root_daum_roughmap root_daum_roughmap_landing';
+              wrap.appendChild(box);
               try {
-                new daum.roughmap.Lander({ "timestamp": "1792999388607", "key": "3wwmuaipsyb", "mapWidth": String(w), "mapHeight": String(h) }).render();
-              } catch (e) { box.parentNode.classList.add('kmap-off'); }
+                new daum.roughmap.Lander({ "timestamp": code.ts, "key": code.key, "mapWidth": String(w), "mapHeight": String(h) }).render();
+              } catch (e) { wrap.classList.add('kmap-off'); }
             })();
           </script>
-          <a class="kmap-fallback" href="https://map.kakao.com/link/search/%EC%A0%95%EA%B4%80%EA%B3%A0%EB%A0%A4%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">카카오맵에서 지도 보기</a>
         </div>
         <a class="vmap-open" href="https://map.kakao.com/link/search/%EC%A0%95%EA%B4%80%EA%B3%A0%EB%A0%A4%ED%95%9C%EC%9D%98%EC%9B%90" target="_blank" rel="noopener">카카오맵에서 길찾기<svg class="ic" aria-hidden="true"><use href="#i-ext"/></svg></a>
       </div>
@@ -302,7 +306,7 @@
   </nav>
   <button type="button" class="fab-btn" aria-expanded="false" aria-controls="fab-menu"><svg class="ic m" aria-hidden="true"><use href="#i-menu"/></svg><svg class="ic x" aria-hidden="true"><use href="#i-x"/></svg><span>메뉴</span></button>
 </div>
-<script src="assets/site.js?v=20261026"></script>
+<script src="assets/site.js?v=20261026b"></script>
 <!-- ANALYTICS:START -->
 <!-- Naver Analytics -->
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
