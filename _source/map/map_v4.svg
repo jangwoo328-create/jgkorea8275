@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 170 1250 960" width="1250" height="960" font-family="'Noto Sans KR','Apple SD Gothic Neo',sans-serif">
+  <defs>
+    <pattern id="grass" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#dfe6cf"/><circle cx="4" cy="4" r="1.6" fill="#c9d4b2"/><circle cx="12" cy="12" r="1.6" fill="#c9d4b2"/></pattern>
+    <filter id="sh" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#3b2d14" flood-opacity=".3"/></filter>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcc07a"/><stop offset="1" stop-color="#b8923f"/></linearGradient>
+  </defs>
+  <rect width="1250" height="1130" fill="#f3efe6"/>
+  <!-- 정관로 서쪽: 북쪽 휴먼시아1단지 / 남쪽 동일1차 (정관4로가 정관로를 건너 이어짐) -->
+  <rect x="14" y="200" width="126" height="456" rx="12" fill="#e9e2d2"/>
+  <rect x="30" y="216" width="94" height="96" rx="6" fill="#ddd4c1"/>
+  <rect x="30" y="546" width="94" height="96" rx="6" fill="#ddd4c1"/>
+  <rect x="16" y="330" width="122" height="200" rx="20" fill="#fffdf8" stroke="#d8ccb0" stroke-width="2"/>
+  <text x="77" y="384" text-anchor="middle" font-size="31" font-weight="700" fill="#4d4436">휴먼</text>
+  <text x="77" y="424" text-anchor="middle" font-size="31" font-weight="700" fill="#4d4436">시아</text>
+  <text x="77" y="476" text-anchor="middle" font-size="31" font-weight="700" fill="#4d4436">1단지</text>
+  <text x="77" y="514" text-anchor="middle" font-size="22" font-weight="500" fill="#7a6f5f">아파트</text>
+  <rect x="0" y="672" width="150" height="96" fill="#efe2bf"/>
+  <line x1="0" y1="720" x2="150" y2="720" stroke="#d9c58f" stroke-width="3" stroke-dasharray="24 18"/>
+  <rect x="14" y="784" width="126" height="346" rx="12" fill="#e9e2d2"/>
+  <rect x="30" y="800" width="94" height="80" rx="6" fill="#ddd4c1"/>
+  <rect x="30" y="1034" width="94" height="80" rx="6" fill="#ddd4c1"/>
+  <rect x="16" y="892" width="122" height="130" rx="20" fill="#fffdf8" stroke="#d8ccb0" stroke-width="2"/>
+  <text x="77" y="948" text-anchor="middle" font-size="31" font-weight="700" fill="#4d4436">동일</text>
+  <text x="77" y="992" text-anchor="middle" font-size="31" font-weight="700" fill="#4d4436">1차</text>
+  <g transform="translate(150 0)">
+
+  <rect width="1100" height="1130" fill="#f3efe6"/>
+
+  <!-- 하천 -->
+  <rect x="970" y="0" width="130" height="1130" fill="url(#grass)"/>
+  <path d="M1012 0 C1004 220 1034 380 1020 560 C1008 740 1036 900 1026 1130 L1062 1130 C1072 900 1044 740 1056 560 C1070 380 1040 220 1048 0 Z" fill="#a9cbd9"/>
+
+  <!-- 정관로 -->
+  <rect x="0" y="0" width="96" height="1130" fill="#efe2bf"/>
+  <line x1="48" y1="0" x2="48" y2="1130" stroke="#d9c58f" stroke-width="3" stroke-dasharray="24 18"/>
+  <text transform="translate(60 510) rotate(-90)" text-anchor="middle" font-size="38" font-weight="700" fill="#9b8656" letter-spacing="10">정관로</text>
+
+  <!-- 위쪽 아파트 -->
+  <rect x="116" y="190" width="842" height="140" rx="12" fill="#e9e2d2"/>
+  <rect x="136" y="206" width="122" height="108" rx="6" fill="#ddd4c1"/>
+  <rect x="272" y="206" width="122" height="108" rx="6" fill="#ddd4c1"/>
+  <rect x="408" y="206" width="122" height="108" rx="6" fill="#ddd4c1"/>
+  <rect x="544" y="206" width="122" height="108" rx="6" fill="#ddd4c1"/>
+  <rect x="680" y="206" width="122" height="108" rx="6" fill="#ddd4c1"/>
+  <rect x="816" y="206" width="122" height="108" rx="6" fill="#ddd4c1"/>
+  <rect x="673" y="230.0" width="234" height="56" rx="28" fill="#fffdf8" stroke="#d8ccb0" stroke-width="2"/>
+  <text x="790" y="271.0" text-anchor="middle" font-size="32" font-weight="700" fill="#4d4436">롯데캐슬1차</text>
+
+  <rect x="96" y="452" width="874" height="34" fill="#ffffff"/>
+  <!-- 남쪽 아파트 -->
+  <rect x="366" y="1000" width="592" height="112" rx="12" fill="#e9e2d2"/>
+  <rect x="386" y="1016" width="128" height="80" rx="6" fill="#ddd4c1"/>
+  <rect x="528" y="1016" width="128" height="80" rx="6" fill="#ddd4c1"/>
+  <rect x="669" y="1016" width="128" height="80" rx="6" fill="#ddd4c1"/>
+  <rect x="810" y="1016" width="128" height="80" rx="6" fill="#ddd4c1"/>
+  <rect x="562" y="1026.0" width="201" height="56" rx="28" fill="#fffdf8" stroke="#d8ccb0" stroke-width="2"/>
+  <text x="662" y="1067.0" text-anchor="middle" font-size="32" font-weight="700" fill="#4d4436">계룡리슈빌</text>
+
+  <rect x="96" y="968" width="874" height="32" fill="#ffffff"/>
+
+  <g transform="translate(0 300)">
+  <!-- 정관4로 + 평전교 -->
+  <rect x="96" y="372" width="1004" height="96" fill="#efe2bf"/>
+  <line x1="96" y1="420" x2="1100" y2="420" stroke="#d9c58f" stroke-width="3" stroke-dasharray="24 18"/>
+  <line x1="970" y1="368" x2="1100" y2="368" stroke="#9a8a6a" stroke-width="5"/>
+  <line x1="970" y1="472" x2="1100" y2="472" stroke="#9a8a6a" stroke-width="5"/>
+  <g fill="#ffffff"><rect x="6" y="380" width="11" height="80"/><rect x="27" y="380" width="11" height="80"/><rect x="48" y="380" width="11" height="80"/><rect x="69" y="380" width="11" height="80"/></g>
+  <text x="520" y="434" text-anchor="middle" font-size="38" font-weight="700" fill="#9b8656" letter-spacing="10" stroke="#efe2bf" stroke-width="10" paint-order="stroke">정관4로</text>
+  <text x="1035" y="432" text-anchor="middle" font-size="30" font-weight="700" fill="#6c5f45" stroke="#efe2bf" stroke-width="8" paint-order="stroke">평전교</text>
+
+  <!-- 북쪽 블록 -->
+  <rect x="116" y="196" width="134" height="158" rx="10" fill="#dbd1bd"/>
+  <text x="183" y="266" text-anchor="middle" font-size="31" font-weight="500" fill="#5f5445">제일</text>
+  <text x="183" y="304" text-anchor="middle" font-size="31" font-weight="500" fill="#5f5445">프라자</text>
+
+  <rect x="270" y="196" width="270" height="158" rx="10" fill="url(#gold)" filter="url(#sh)"/>
+  <text x="405" y="270" text-anchor="middle" font-size="40" font-weight="900" fill="#241b0c">2층 한의원</text>
+  <text x="405" y="318" text-anchor="middle" font-size="27" font-weight="500" fill="#3c3016">1층 파리바게뜨</text>
+  <g transform="translate(496 208)"><rect width="34" height="34" rx="7" fill="#2b5aa8"/><text x="17" y="27" text-anchor="middle" font-size="25" font-weight="900" fill="#fff">P</text></g>
+
+  <!-- 한의원과 주차장 사이 상가들 -->
+  <rect x="566" y="196" width="104" height="158" rx="10" fill="#dbd1bd"/>
+  <rect x="682" y="196" width="104" height="158" rx="10" fill="#dbd1bd"/>
+  <text x="676" y="285" text-anchor="middle" font-size="27" font-weight="500" fill="#7a6f5f">상가</text>
+
+  <rect x="806" y="196" width="152" height="158" rx="10" fill="#dbe4f2" stroke="#2b5aa8" stroke-width="4" stroke-dasharray="11 8"/>
+  <rect x="856" y="212" width="52" height="52" rx="11" fill="#2b5aa8"/>
+  <text x="882" y="252" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">P</text>
+  <text x="882" y="302" text-anchor="middle" font-size="30" font-weight="900" fill="#1f3f78">무료</text>
+  <text x="882" y="338" text-anchor="middle" font-size="25" font-weight="700" fill="#1f3f78">공영주차장</text>
+
+  <!-- 버스정류장 -->
+  <g transform="translate(560 372)">
+    <rect x="-24" y="-24" width="48" height="48" rx="11" fill="#2f7a4f"/>
+    <path d="M-12 -12 h24 a3 3 0 0 1 3 3 v15 a3 3 0 0 1 -3 3 h-24 a3 3 0 0 1 -3 -3 v-15 a3 3 0 0 1 3 -3 Z M-11 -7 h22 v7 h-22 Z" fill="#fff" fill-rule="evenodd"/>
+    <circle cx="-7" cy="13" r="3.2" fill="#fff"/><circle cx="7" cy="13" r="3.2" fill="#fff"/>
+  </g>
+  <g transform="translate(351 464)">
+    <rect x="-24" y="-24" width="48" height="48" rx="11" fill="#2f7a4f"/>
+    <path d="M-12 -12 h24 a3 3 0 0 1 3 3 v15 a3 3 0 0 1 -3 3 h-24 a3 3 0 0 1 -3 -3 v-15 a3 3 0 0 1 3 -3 Z M-11 -7 h22 v7 h-22 Z" fill="#fff" fill-rule="evenodd"/>
+    <circle cx="-7" cy="13" r="3.2" fill="#fff"/><circle cx="7" cy="13" r="3.2" fill="#fff"/>
+  </g>
+  <g transform="translate(92 530)">
+    <rect x="-24" y="-24" width="48" height="48" rx="11" fill="#2f7a4f"/>
+    <path d="M-12 -12 h24 a3 3 0 0 1 3 3 v15 a3 3 0 0 1 -3 3 h-24 a3 3 0 0 1 -3 -3 v-15 a3 3 0 0 1 3 -3 Z M-11 -7 h22 v7 h-22 Z" fill="#fff" fill-rule="evenodd"/>
+    <circle cx="-7" cy="13" r="3.2" fill="#fff"/><circle cx="7" cy="13" r="3.2" fill="#fff"/>
+  </g>
+  <g transform="translate(4 530)">
+    <rect x="-24" y="-24" width="48" height="48" rx="11" fill="#2f7a4f"/>
+    <path d="M-12 -12 h24 a3 3 0 0 1 3 3 v15 a3 3 0 0 1 -3 3 h-24 a3 3 0 0 1 -3 -3 v-15 a3 3 0 0 1 3 -3 Z M-11 -7 h22 v7 h-22 Z" fill="#fff" fill-rule="evenodd"/>
+    <circle cx="-7" cy="13" r="3.2" fill="#fff"/><circle cx="7" cy="13" r="3.2" fill="#fff"/>
+  </g>
+
+  <!-- 남쪽 블록 -->
+  <rect x="116" y="488" width="230" height="160" rx="10" fill="#dbd1bd"/>
+  <text x="231" y="558" text-anchor="middle" font-size="30" font-weight="700" fill="#5f5445">정관</text>
+  <text x="231" y="598" text-anchor="middle" font-size="30" font-weight="700" fill="#5f5445">주민자치회관</text>
+  <rect x="366" y="488" width="420" height="160" rx="10" fill="#e3dac8"/>
+  <rect x="806" y="488" width="152" height="190" rx="10" fill="#d6cbb4"/>
+  <g transform="translate(882 542)" fill="#6d6253"><rect x="-5" y="-22" width="10" height="50"/><rect x="-19" y="-8" width="38" height="10"/></g>
+  <text x="882" y="630" text-anchor="middle" font-size="32" font-weight="700" fill="#5f5445">정관성당</text>
+
+  <!-- 건너편 표시 -->
+
+  <!-- 한의원 이름표 -->
+  <g filter="url(#sh)">
+    <rect x="215" y="40" width="380" height="110" rx="22" fill="#171511"/>
+    <path d="M389 148 L405 178 L421 148 Z" fill="#171511"/>
+  </g>
+  <circle cx="269" cy="95" r="30" fill="url(#gold)"/>
+  <path d="M269 75 v40 M249 95 h40" stroke="#171511" stroke-width="8" stroke-linecap="round"/>
+  <text x="315" y="88" font-size="38" font-weight="900" fill="#f6eedd">정관고려한의원</text>
+  <text x="316" y="126" font-size="25" font-weight="500" fill="#dcc48c">정관4로 37 · 2층</text>
+
+  </g>
+  <!-- 방위 -->
+  <g transform="translate(1035 70)">
+    <circle r="38" fill="#fffdf8" stroke="#d6caa9" stroke-width="2"/>
+    <path d="M0 -26 L12 8 L0 2 L-12 8 Z" fill="#171511"/>
+    <text y="30" text-anchor="middle" font-size="18" font-weight="900" fill="#171511">N</text>
+  </g>
+  </g>
+</svg>

@@ -1,0 +1,153 @@
+<title>대문 사진 조절</title>
+<style>
+:root{--bg:#f3efe6;--paper:#fffdf8;--ink:#171511;--text:#3b352c;--muted:#7a6f5f;--line:#e3dccd;--gold:#c7a65c;--gold-deep:#9a7a34;--ok:#2f7a4f;--warn:#b3462f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1915;--paper:#24211c;--ink:#f3ede2;--text:#ddd5c8;--muted:#a89d8c;--line:#3a352d}}
+:root[data-theme="dark"]{--bg:#1b1915;--paper:#24211c;--ink:#f3ede2;--text:#ddd5c8;--muted:#a89d8c;--line:#3a352d}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;padding:18px 24px 6px}
+.top h1{margin:0;font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.top p{margin:0;color:var(--muted);font-size:13px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;padding:14px 24px 28px;align-items:start}
+@media (max-width:900px){.layout{grid-template-columns:1fr;padding-inline:16px}.top{padding-inline:16px}}
+.stagewrap{min-width:0}
+.wbar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.wbar span{font-size:12.5px;color:var(--muted);font-weight:700}
+.seg{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;padding:6px 12px;border-radius:999px;font:inherit;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.stage{position:relative;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#171511;box-shadow:0 24px 50px -34px rgba(40,30,15,.6)}
+.stage iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+.grab{position:absolute;top:0;bottom:0;right:0;cursor:grab;touch-action:none}
+.grab.on{cursor:grabbing}
+.grab::after{content:"여기를 끌어서 사진 움직이기";position:absolute;right:12px;bottom:12px;padding:6px 11px;border-radius:999px;background:rgba(23,21,17,.78);color:#e9d9b0;font-size:12px;font-weight:700;pointer-events:none;transition:opacity .2s}
+.grab.on::after,.grab.moved::after{opacity:0}
+.grab .box{position:absolute;inset:0;border:2px dashed rgba(212,180,108,.7);border-radius:4px;pointer-events:none}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+.panel h2{margin:0 0 12px;font-size:14px;color:var(--ink)}
+.field{margin-bottom:16px}
+.field label,.field .lab{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.field label b{color:var(--gold-deep);font-variant-numeric:tabular-nums}
+.field .hint{margin-top:4px;font-size:12px;color:var(--muted)}
+input[type=range]{width:100%;accent-color:#b8923f}
+.pics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pics button{border:2px solid transparent;border-radius:10px;padding:0;background:none;cursor:pointer;overflow:hidden;text-align:center;font:inherit;color:var(--text)}
+.pics img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px}
+.pics span{display:block;padding:4px 0 2px;font-size:12px;font-weight:700}
+.pics button[aria-pressed=true]{border-color:var(--gold)}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.btn{border:0;border-radius:999px;padding:11px 18px;font:inherit;font-weight:800;font-size:14px;cursor:pointer}
+.btn.pri{background:linear-gradient(180deg,#d4b46c,#c09a4c);color:#171511}
+.btn.sec{background:none;border:1px solid var(--line);color:var(--text)}
+.st{min-height:20px;margin-top:10px;font-size:13px;font-weight:700}
+.st.ok{color:var(--ok)}.st.err{color:var(--warn)}
+.note{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+</style>
+
+<div class="top">
+  <h1>대문 사진 조절 · 컴퓨터 화면</h1>
+  <p>휴대폰 화면은 바뀌지 않습니다. 저장한 뒤 "반영하자" 하시면 홈페이지에 적용됩니다.</p>
+</div>
+<div class="layout">
+  <div class="stagewrap">
+    <div class="wbar"><span>미리보기 화면 너비</span>
+      <div class="seg" id="widths">
+        <button type="button" data-w="1280" aria-pressed="false">노트북 1280</button>
+        <button type="button" data-w="1440" aria-pressed="true">모니터 1440</button>
+        <button type="button" data-w="1920" aria-pressed="false">큰 모니터 1920</button>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <iframe id="fr" src="site/index.html" title="홈페이지 컴퓨터 화면 미리보기" scrolling="no" tabindex="-1"></iframe>
+      <div class="grab" id="grab" aria-label="끌어서 사진 위치 옮기기"><div class="box"></div></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>사진 고르기</h2>
+    <div class="field">
+      <div class="pics" id="pics">
+        <button type="button" data-src="images/hero-sign.jpg" aria-pressed="true"><img src="site/images/hero-sign.jpg" alt=""><span>간판</span></button>
+        <button type="button" data-src="images/33607c6a.jpg" aria-pressed="false"><img src="site/images/33607c6a.jpg" alt=""><span>건물 전체(낮)</span></button>
+        <button type="button" data-src="images/night-full.jpg" aria-pressed="false"><img src="site/images/night-full.jpg" alt=""><span>야경</span></button>
+      </div>
+      <p class="hint">주변을 많이 보이게 하려면 '건물 전체(낮)'나 '야경'이 좋습니다.</p>
+    </div>
+    <div class="field"><label for="zoom">확대 <b id="zoomv"></b></label><input id="zoom" type="range" min="100" max="250" step="1"><p class="hint">왼쪽 끝으로 갈수록 사진이 넓게(주변이 많이) 보입니다.</p></div>
+    <div class="field"><label for="wid">사진 영역 너비 <b id="widv"></b></label><input id="wid" type="range" min="40" max="70" step="1"><p class="hint">넓히면 사진이 글자 쪽으로 더 넓게 퍼집니다.</p></div>
+    <div class="field"><label for="bri">밝기 <b id="briv"></b></label><input id="bri" type="range" min="40" max="100" step="1"></div>
+    <div class="field"><label for="px">좌우 위치 <b id="pxv"></b></label><input id="px" type="range" min="0" max="100" step="1"></div>
+    <div class="field"><label for="py">위아래 위치 <b id="pyv"></b></label><input id="py" type="range" min="0" max="100" step="1"></div>
+    <div class="acts">
+      <button type="button" class="btn pri" id="save">이대로 저장</button>
+      <button type="button" class="btn sec" id="reset">처음대로</button>
+    </div>
+    <p class="st" id="st" role="status"></p>
+    <p class="note">미리보기 사진 위를 마우스로 끌면 사진이 움직입니다. 저장은 원장님만 할 수 있습니다.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var DEF={src:'images/hero-sign.jpg',zoom:100,width:46,bright:66,x:50,y:30};
+  var S=Object.assign({},DEF), W=1440, db=null;
+  var fr=document.getElementById('fr'), stage=document.getElementById('stage'), grab=document.getElementById('grab'), st=document.getElementById('st');
+  var els={zoom:document.getElementById('zoom'),width:document.getElementById('wid'),bright:document.getElementById('bri'),x:document.getElementById('px'),y:document.getElementById('py')};
+  var outs={zoom:'zoomv',width:'widv',bright:'briv',x:'pxv',y:'pyv'};
+  function status(t,c){ st.textContent=t; st.className='st'+(c?' '+c:''); }
+  function doc(){ try{ return fr.contentWindow.document; }catch(e){ return null; } }
+  function heroH(){ var d=doc(); if(!d) return 720; var h=d.querySelector('.hero'); if(!h) return 720; var r=h.getBoundingClientRect(); return Math.ceil(r.bottom + (d.defaultView.scrollY||0)); }
+  function fit(){
+    var s=stage.clientWidth/W; fr.style.width=W+'px';
+    var H=heroH(); fr.style.height=(H+40)+'px'; fr.style.transform='scale('+s+')';
+    stage.style.height=Math.round(H*s)+'px';
+    var d=doc(); if(d){ var p=d.querySelector('.hero-photo'), h=d.querySelector('.hero');
+      if(p&&h){ var pr=p.getBoundingClientRect(), hr=h.getBoundingClientRect(); grab.style.left=(pr.left*s)+'px'; grab.style.top=(pr.top*s)+'px'; grab.style.width=(pr.width*s)+'px'; grab.style.height=(pr.height*s)+'px'; grab.style.bottom='auto'; grab.style.right='auto'; } }
+  }
+  function css(){
+    return '@media (min-width:1000px){.hero-photo{width:'+S.width+'%;overflow:hidden}'+
+      '.hero-photo img{object-position:'+S.x+'% '+S.y+'%;transform:scale('+(S.zoom/100)+');transform-origin:'+S.x+'% '+S.y+'%;filter:brightness('+(S.bright/100)+') saturate(.88)}}';
+  }
+  function apply(){
+    var d=doc(); if(!d) return;
+    var el=d.getElementById('adj'); if(!el){ el=d.createElement('style'); el.id='adj'; d.head.appendChild(el); }
+    el.textContent=css();
+    var img=d.querySelector('.hero-photo img'); if(img && img.getAttribute('src')!==S.src){ img.setAttribute('src',S.src); img.removeAttribute('srcset'); }
+    Object.keys(els).forEach(function(k){ els[k].value=S[k]; document.getElementById(outs[k]).textContent=S[k]+(k==='x'||k==='y'?'':'%'); });
+    document.querySelectorAll('#pics button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-src')===S.src?'true':'false'); });
+    requestAnimationFrame(fit);
+  }
+  fr.addEventListener('load',function(){
+    var d=doc(); if(d){ var s=d.createElement('style'); s.textContent='html{scrollbar-width:none;overflow:hidden}html::-webkit-scrollbar{display:none}.hero-photo img{transition:none}'; d.head.appendChild(s); }
+    apply(); setTimeout(fit,300); setTimeout(fit,1200);
+  });
+  window.addEventListener('resize',fit);
+  document.getElementById('widths').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    this.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); }); W=+b.getAttribute('data-w'); fit(); setTimeout(fit,100); });
+  document.getElementById('pics').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return;
+    var src=b.getAttribute('data-src'); if(src===S.src) return; S.src=src; S.zoom=100; S.x=50; S.y=src.indexOf('night')>-1?40:30; status(''); apply(); });
+  Object.keys(els).forEach(function(k){ els[k].addEventListener('input',function(){ S[k]=+els[k].value; status(''); apply(); }); });
+  // 끌어서 옮기기
+  var drag=null;
+  grab.addEventListener('pointerdown',function(e){ drag={x:e.clientX,y:e.clientY,sx:S.x,sy:S.y}; grab.classList.add('on','moved'); try{ grab.setPointerCapture(e.pointerId); }catch(x){} });
+  grab.addEventListener('pointermove',function(e){ if(!drag) return;
+    var k=120/(S.zoom/100+0.6);
+    S.x=Math.max(0,Math.min(100,Math.round(drag.sx-(e.clientX-drag.x)/grab.clientWidth*k)));
+    S.y=Math.max(0,Math.min(100,Math.round(drag.sy-(e.clientY-drag.y)/grab.clientHeight*k)));
+    status(''); apply(); });
+  function up(){ drag=null; grab.classList.remove('on'); }
+  grab.addEventListener('pointerup',up); grab.addEventListener('pointercancel',up);
+  grab.addEventListener('wheel',function(e){ e.preventDefault(); S.zoom=Math.max(100,Math.min(250,S.zoom-Math.sign(e.deltaY)*4)); status(''); apply(); },{passive:false});
+  // 저장
+  document.getElementById('save').addEventListener('click',function(){
+    if(!db){ status('이 화면에서는 저장할 수 없습니다. 설정 값을 말씀해 주셔도 됩니다.','err'); return; }
+    status('저장 중…');
+    db.doc('settings/hero-pc').set(Object.assign({},S,{updatedAt:Date.now()})).then(function(){ status('저장됨 · "반영하자" 하시면 홈페이지에 적용됩니다','ok'); },function(){ status('저장하지 못했습니다. 다시 눌러 주세요.','err'); });
+  });
+  document.getElementById('reset').addEventListener('click',function(){ S=Object.assign({},DEF); status('처음 상태로 되돌렸습니다. 저장을 눌러야 기록됩니다.'); apply(); });
+  apply();
+  if(window.claude && claude.use){ claude.use('db').then(function(d){ db=d; if(!db) return;
+    db.doc('settings/hero-pc').get().then(function(s){ if(s.exists){ var v=s.data()||{}; Object.keys(DEF).forEach(function(k){ if(v[k]!==undefined) S[k]=v[k]; }); apply(); status('저장해 둔 설정을 불러왔습니다'); } }).catch(function(){});
+  }).catch(function(){}); }
+})();
+</script>
