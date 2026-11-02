@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261031'
+VER = '20261102'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -377,6 +377,15 @@ def index():
       <a class="btn-dark" href="{BLOG}" target="_blank" rel="noopener" style="margin-top:22px">블로그에서 더 보기{ic("chev")}</a>
     </div>
     <div class="col-list">
+    <a class="colcard" href="column-2.html">
+      <img src="images/column-2-hero.jpg" alt="원장 칼럼 · 침 한방에 낫게 해주소~ · 근육통, 회복 속도를 결정하는 4가지 요인" width="743" height="743" loading="lazy">
+      <div class="body">
+        <span class="chip">칼럼 · 근육통</span>
+        <h3>"침 한방에 낫게 <span class="nw">해주소~"</span> 근육통 회복 속도를 결정하는 네가지 요인</h3>
+        <p>같은 치료를 받아도 빨리 낫는 분과 더디 낫는 분이 있습니다. 그 차이를 만드는 네 가지 요인을 쉽게 풀었습니다.</p>
+        <time datetime="2026-11-01">2026.11.01</time>
+      </div>
+    </a>
     <a class="colcard" href="essay-4.html">
       <img src="images/essay-4-hero.jpg" alt="에세이 04 · 불은 그대로인데 사이렌만 끄고 있지는 않습니까?" width="743" height="743" loading="lazy">
       <div class="body">
@@ -612,9 +621,9 @@ def column1():
     </ul>
     <p>발목 염좌는 "그냥 삔 것"으로 여겨 대충 넘기기 쉽습니다. 하지만 충분히 회복되지 않으면 같은 발목을 반복해서 삐는 <b>만성 발목 불안정성</b>으로 이어질 수 있습니다. 초기에는 보호하고, 붓기가 빠진 뒤에는 균형 운동과 발목 근력 운동을 해야 합니다.</p>
 
-    <h2 id="s6"><span class="num">3. 힘줄 손상</span>: 가장 느리고, 쉬기만 해서는 잘 낫지 않습니다</h2>
-    <p>힘줄은 근육 끝이 뼈에 붙는 단단한 끈으로, <b>인대처럼 혈액 공급이 적은 데다 반복 사용으로 조금씩 상하고 쉬기도 어렵습니다.</b> 그래서 회복이 가장 느려 보통 <b>6주~3개월</b>, 오래 끌어 만성이 된 경우는 <b>6개월 이상</b> 걸리기도 합니다.</p>
-    <p>힘줄 문제는 한 번에 크게 다치기보다 <b>같은 동작을 반복</b>하며 조금씩 상하는 경우가 대부분입니다. 염증보다 힘줄 조직이 약해지는 변성(건병증)이 중심이라, <b><u>원인 동작을 계속하는 한 잘 낫지 않습니다.</u></b></p>
+    <h2 id="s6"><span class="num">3. 힘줄 손상</span>: 셋 중 회복이 가장 느립니다.</h2>
+    <p>힘줄은 근육 끝이 뼈에 붙는 단단한 끈입니다.<br><b>인대처럼 혈액 공급이 적은 데다, 일상 생활에서 계속 부하를 받게 됩니다.</b><br>그래서 회복이 가장 느려 보통 <b>6주~3개월</b>, 오래 끌어 만성이 된 경우는 <b>6개월 이상</b> 걸리기도 합니다.</p>
+    <p>힘줄 문제는 한 번에 크게 다치기보다 <b>같은 동작을 반복</b>하며 조금씩 상하는 경우가 대부분입니다.<br>염증보다 힘줄 조직이 약해지는 변성(건병증)이 중심이라, <b><u>원인 동작을 계속하는 한 잘 낫지 않습니다.</u></b></p>
     <figure><img src="images/column-1-tendon2.jpg" alt="진료실에서 자주 보는 힘줄 질환: 테니스엘보(외측상과염, 팔꿈치 바깥쪽), 골프엘보(내측상과염, 팔꿈치 안쪽), 회전근개 건병증(어깨), 아킬레스건염(발뒤꿈치 위), 슬개건염(점퍼스 니, 무릎 앞쪽)" width="1080" height="1746" loading="lazy"><figcaption>테니스엘보, 골프엘보, 회전근개 건병증, 아킬레스건염, 슬개건염</figcaption></figure>
     <p>힘줄은 무조건 쉬게 하면 오히려 약해집니다. 통증이 심한 시기를 넘기면 <b>아프지 않은 범위에서 조금씩 부하</b>를 늘리는 운동이 회복을 돕습니다. <b>원인이 된 반복 동작을 줄이는 것</b>도 치료만큼 중요합니다.</p>
 
@@ -653,6 +662,7 @@ def column1():
   <nav class="related" aria-label="진료 분야 바로가기">
     <h2>관련 진료 분야</h2>
     <ul>
+      <li><a href="column-2.html">칼럼 · 근육통 회복 속도를 결정하는 네가지 요인{ic("chev")}</a></li>
       <li><a href="index.html#area">근육통·관절통{ic("chev")}</a></li>
       <li><a href="index.html#area">담결림{ic("chev")}</a></li>
       <li><a href="index.html#treatment">약침·부항·뜸{ic("chev")}</a></li>
@@ -1135,6 +1145,195 @@ def essay4():
 '''
     return head + '\n' + body
 
+COL2_URL = 'https://jgkorea8275.co.kr/column-2.html'
+COL2_TITLE = '"침 한방에 낫게 해주소~" 근육통 회복 속도를 결정하는 네가지 요인'
+COL2_LD = {"@context": "https://schema.org", "@type": "Article", "headline": "침 한방에 낫게 해주소~ 근육통 회복 속도를 결정하는 네가지 요인", "datePublished": "2026-11-01", "image": ["https://jgkorea8275.co.kr/images/column-2-hero.jpg"], "mainEntityOfPage": "https://jgkorea8275.co.kr/column-2.html", "author": {"@type": "Person", "name": "박장우", "jobTitle": "한의학박사, 한방재활의학과 전문의"}, "publisher": {"@type": "Organization", "name": "정관고려한의원", "logo": {"@type": "ImageObject", "url": "https://jgkorea8275.co.kr/favicon.png"}}}
+COL2_CRUMB = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "정관고려한의원", "item": "https://jgkorea8275.co.kr/"},
+    {"@type": "ListItem", "position": 2, "name": "칼럼 및 에세이", "item": "https://jgkorea8275.co.kr/#column"},
+    {"@type": "ListItem", "position": 3, "name": "침 한방에 낫게 해주소~ 근육통 회복 속도를 결정하는 네가지 요인", "item": "https://jgkorea8275.co.kr/column-2.html"}]}
+
+def column2():
+    title = COL2_TITLE.replace('"', '&quot;')
+    title_plain = title
+    title_attr = title
+    desc = '같은 근육통도 회복 속도는 다릅니다. 다친 정도, 일상 관리, 몸의 회복력, 한의사의 역할까지 네 가지 요인을 정리했습니다.'
+    toc = [('s1', '기계 수리와 몸의 치료, 무엇이 다를까요?'), ('s2', '피부 상처로 생각해 볼게요'), ('s3', '근육통이 낫는 속도는 무엇이 결정할까요?'),
+           ('s4', '근육통을 빨리 낫게 하려면 이렇게 합시다.'), ('s5', '정리하며')]
+    chk = lambda t: f'<li>{ic("check")}<span>{t}</span></li>'
+    toc_html = ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc)
+    head = f'''<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{title_plain} | 칼럼 | 정관고려한의원</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{desc}">
+<meta name="theme-color" content="#171511">
+<link rel="canonical" href="{COL2_URL}">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="alternate" type="application/rss+xml" title="정관고려한의원 칼럼·에세이" href="https://jgkorea8275.co.kr/rss.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="정관고려한의원">
+<meta property="og:title" content="{title_attr} | 정관고려한의원 칼럼">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{COL2_URL}">
+<meta property="og:image" content="https://jgkorea8275.co.kr/images/column-2-hero.jpg">
+<meta property="og:image:width" content="743">
+<meta property="og:image:height" content="743">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jgkorea8275.co.kr/images/column-2-hero.jpg">
+<meta property="article:published_time" content="2026-11-01">
+<script type="application/ld+json">{json.dumps(COL2_LD, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(COL2_CRUMB, ensure_ascii=False)}</script>
+{FONTS}
+<link rel="stylesheet" href="assets/site.css?v={VER}">
+</head>'''
+
+    body = f'''<body class="has-dock">
+{SPRITE}
+{header('index.html')}
+<div class="cbanner">
+  <img src="images/column-banner.jpg" alt="" width="1600" height="900">
+  <div class="wrap"><p class="ttl">건강 칼럼</p><p>진료실에서 자주 받는 질문을 쉽게 풀어 씁니다.</p></div>
+</div>
+<main class="art column">
+  <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+  <header class="art-head">
+    <span class="chip">칼럼 · 근육통</span>
+    <h1>{title}</h1>
+    
+    <p class="art-meta"><span><time datetime="2026-11-01">2026.11.01</time></span><span>정관고려한의원 건강 칼럼</span></p>
+  </header>
+
+  <section class="sum" aria-labelledby="sum-h">
+    <h2 id="sum-h">이 글에서 알 수 있는 내용</h2>
+    <ul>
+      {chk('치료와 치유는 어떻게 다를까요')}
+      {chk('근육통 회복 속도를 결정하는 네 가지 요인')}
+      {chk('빨리 낫기 위해 환자와 한의사가 함께 할 일')}
+    </ul>
+    <details class="toc"><summary>목차 보기{ic("down")}</summary><ol>{toc_html}</ol></details>
+  </section>
+
+  <div class="prose" data-size="0">
+    <figure><img src="images/column-2-hero.jpg" alt="원장 칼럼 · 원장님, 침 한방에 낫게 해주소~ · 근육통, 회복 속도를 결정하는 4가지 요인 · 낫는 데 필요한 것: 치료 + 회복 시간 = 치유" width="743" height="743"></figure>
+
+    <p>안녕하세요~ 정관고려한의원 원장 박장우 입니다.</p>
+    <p>진료실에서 가끔 환자분들께 듣는 말이 있습니다.</p>
+    <p class="lead-quote">"원장님, 빨리 낫게 해주소~"<br>"원장님, 침 한방에 낫게 해주소~"</p>
+    <p>그러면 저는 웃으면서 이렇게 대답합니다.</p>
+    <p><b>"아이고, 사람 치료하는 게 어디 기계 고치는 거랑 같나요.<br>뚝딱뚝딱 손본다고 바로 낫는 게 아입니더~~^^"</b></p>
+    <p>오늘은 제가 진료실에서 환자분들께 자주 드리는 이야기를 쉬운 글로 풀어봤습니다.</p>
+    <figure><img src="images/column-2-coach.jpg" alt="침을 맞는 환자(아~ 시원하다)와 옆에서 손을 든 한의사(저는 낫는 환경을 만들께요, 우리 같이 노력해봅시다~)" width="743" height="483" loading="lazy"><figcaption>치료는 의사와 환자가 함께 합니다.</figcaption></figure>
+
+    <h2 id="s1">기계 수리와 몸의 치료, 무엇이 다를까요?</h2>
+    <p>고장난 기계는 수리가 끝나면 그걸로 끝입니다.</p>
+    <p>하지만 우리 몸이 나으려면 두 가지가 필요합니다.<br>바로 <b>치료</b>(수리)와 <b>회복 시간</b>입니다.</p>
+    <p>또 하나 다른 점이 있습니다.<br>기계는 누가 고쳐 주지 않으면 스스로 고쳐지지 않습니다.<br>그런데 우리 몸에는 스스로 낫는 힘, <b>자연치유력</b>이 있습니다.</p>
+    <p>그렇다면 가만히 두면 낫는데 치료는 왜 받을까요?<br>치료는 <b>몸이 스스로 낫는 힘을 잘 발휘하도록 돕고</b>, 회복을 앞당겨 주기 때문입니다.</p>
+
+    <h2 id="s2">피부 상처로 생각해 볼게요</h2>
+    <p>기계에 흠집이 나면 수리하는 그 자리에서 바로 매끈해집니다.<br>하지만 손에 상처가 나면, 치료를 받았다고 그 자리에서 마술처럼 싹 아물지는 않죠.</p>
+    <p>상처를 소독하고 꿰매는 것은 <b>치료</b>입니다.<br>그 뒤에 새 살이 차오르며 아무는 것은 <b>치유</b>입니다.</p>
+    <p>같은 상처라도 살성이 좋은 분은 금방 아물고, 그렇지 못한 분은 더디 아물죠.</p>
+    <p>간단히 요약하면,</p>
+    <p><b>치료는 낫는 길을 열어 드리는 것이고, 그 길을 걸어 낫는 것은 환자분의 몸입니다.</b></p>
+
+    <h2 id="s3">근육통이 낫는 속도는 무엇이 결정할까요?</h2>
+    <p>근육통도 마찬가지입니다.<br>같은 치료를 받아도 빨리 나으시는 분이 있고, 조금 더디 나으시는 분이 있습니다.<br>그 차이를 만드는 것은 크게 네 가지입니다.</p>
+
+    <h3 class="factor"><span class="n">1</span><span>우선, <b>다친 정도</b>입니다.</span></h3>
+    <ul class="checks">
+      <li>{ic("check")}<span>잠깐 무리한 뒤 생긴 가벼운 근육통인지,</span></li>
+      <li>{ic("check")}<span>근육이 파열된 것인지(대표적으로 종아리 근파열),</span></li>
+      <li>{ic("check")}<span>같은 부위에 부담이 반복되면서 통증이 오래 이어진 것인지</span></li>
+    </ul>
+    <p>에 따라 회복 속도는 달라집니다.<br>그리고 허리의 경우, 디스크나 협착증 때문에 생긴 허리근육통은 더 오래 갑니다.</p>
+
+    <h3 class="factor"><span class="n">2</span><span>두 번째, <b>일상에서 얼마나 조심하느냐</b> 입니다.</span></h3>
+    <p>치료받는 시간은 길어야 <b>1시간</b>입니다.<br>나머지 <b>23시간</b>은 환자분의 일상입니다.</p>
+    <p>치료받고 나서 무거운 짐을 들거나, 한 자세로 오래 앉아 있거나, 아픈데도 무리해서 운동하시면 회복되던 근육을 다시 혹사시키는 셈이 됩니다.</p>
+    <p>상처에 밴드를 붙이고 가만히 두면 빨리 나을 것을, 자꾸 건드리고 흙 묻히고 하면 상처가 오래가고 덧나겠죠?<br>근육도 똑같습니다.</p>
+
+    <h3 class="factor"><span class="n">3</span><span>세 번째, <b>몸의 회복력</b>입니다.</span></h3>
+    <p>상처가 아무는 속도가 사람마다 다르듯, 근육이 회복되는 속도도 사람마다 다릅니다.<br>나이, 체질, 평소 건강 상태, 당뇨 같은 지병에 따라 회복이 빠르기도 하고 더디기도 합니다.</p>
+
+    <h3 class="factor"><span class="n">4</span><span>네 번째가 <b>의사(한의사)의 역할</b>입니다.</span></h3>
+    <p>저는 저의 역할을 <b>코치</b>에 비유합니다.<br>운동선수 옆에서 코치가 대신 뛰어줄 수는 없습니다.<br>하지만 자세를 잡아주고, 컨디션을 살피고, 힘을 더 낼 수 있게 도와줍니다.</p>
+    <p>침, 전자뜸, 부항, 약침, 한약 등은 모두 <b>몸이 스스로 회복하는 힘을 끌어올리도록 돕는 도구</b>입니다.</p>
+
+    <h2 id="s4">근육통을 빨리 낫게 하려면 이렇게 합시다.</h2>
+    <figure><img src="images/column-2-tug.jpg" alt="병세(병의 기세)와 회복력(몸이 스스로 낫는 힘)의 줄다리기. 병세를 돕는 것: 다친 정도, 일상에서 무리. 회복력을 돕는 것: 충분한 수면, 무리하지 않기, 한의사 치료. 회복력을 돕는 힘이 많을수록 몸은 빨리 낫습니다." width="743" height="557" loading="lazy"><figcaption>병세와 회복력의 줄다리기</figcaption></figure>
+    <p>저는 질병 상태를 극복하는 과정을 위의 그림과 같이 <b>병세</b>와 <b>회복력(치유력)</b> 사이의 줄다리기라고 생각합니다.</p>
+    <p>그래서 근육통의 빠른 회복을 위해서는 환자와 의사의 협력이 필요합니다.</p>
+    <p>앞서 살펴봤던 회복속도를 좌우하는 네 가지 요인들 중,<br>우리가 어찌할 수 없는 것은 첫번째 <b>다친 정도</b>입니다.<br>이건 이미 일어난 일이니 되돌릴 수는 없습니다.</p>
+    <ul class="dl">
+      <li><b>환자 입장</b>할 게 없습니다.</li>
+      <li><b>의사 입장</b>원인이 무엇인지 진단하여 앞으로의 경과를 예측해 줄 수 있습니다.</li>
+    </ul>
+    <p>나머지 세가지 요인은 환자와 의사가 힘을 합쳐 긍정적인 방향으로 이끌 수 있습니다.</p>
+    <ul class="roles">
+      <li><b class="who">의사</b>치료를 통해, 회복하기 좋은 상태를 만들어 환자의 <b>치유력(회복력)</b>을 돕습니다.</li>
+      <li><b class="who">환자분</b>'<b>일상에서 무리하지 않음</b>'을 지켜 병세가 진행되지 않도록 합니다.
+        <p class="sub">허리 근육통의 경우, 예를 들면 이런 것들입니다.</p>
+        <ul class="checks">
+          <li>{ic("check")}<span>무거운 물건 드는 일, 갑자기 허리를 숙이거나 비트는 동작, 격한 운동 등은 당분간 쉬어 주세요.</span></li>
+          <li>{ic("check")}<span>오래 앉아 계실 때는 중간중간 일어나 가볍게 몸을 풀어 주세요.(505법칙)</span></li>
+        </ul>
+      </li>
+      <li><b class="who">환자분</b>또한 <b>충분한 수면</b>을 취함으로써 <b>치유력(회복력)</b>을 올릴 수 있습니다.
+        <p class="sub">우리 몸은 잠을 자는 동안 손상된 조직을 활발히 복구합니다.<br>평소보다 1~2시간 일찍 주무시거나, 그 이상 더 주무시는 것도 치유에 아주 많은 도움이 됩니다.</p>
+      </li>
+    </ul>
+
+    <h2 id="s5">정리하며</h2>
+    <p>몸을 기계처럼 생각해서 "수리했으니(치료했으니) 이제 끝"이라고 여기시면 안 됩니다.<br>우리 몸은 살아 숨쉬는 생명체입니다.<br>부품을 갈아 끼우면 그 자리에서 복구가 끝나는 기계와는 다릅니다.</p>
+    <ul class="checks">
+      <li>{ic("check")}<span>의사(한의사)가 하는 <b>치료</b>와,</span></li>
+      <li>{ic("check")}<span>환자분이 몸의 <b>치유</b>를 위해 <b>일상에서 주의</b>하면서 <b>회복력을 높이기 위해서 하는 노력들</b>.</span></li>
+    </ul>
+    <p>이 두 가지가 함께 할 때 회복도 한결 빨라집니다.</p>
+    <p class="ps">ps. 저도 마음 같아서는 정말 침 한방에 낫게 해 드리고 싶습니다...TT;;<br>하지만 빠른 회복은 결국 의사와 환자분이 <b>함께 만들어 가는</b> 거랍니다.</p>
+    <p class="sign">한의학박사 · 한방재활의학과 전문의 <b>박장우</b></p>
+  </div>
+
+  <aside class="ccta" aria-label="진료 안내">
+    <div class="ccta-top"><img src="images/c9de5ada.png" alt="" width="220" height="220"><div><b>정관고려한의원 진료 안내</b><p>예약 없이 방문하세요. {ADDR}</p></div></div>
+    <div class="acts"><a class="btn-gold" href="{TEL_HREF}">{ic("phone")}전화 문의 {TEL}</a><a class="btn-line" href="index.html#hours">진료시간</a></div>
+  </aside>
+
+  <p class="src-link"><a href="https://blog.naver.com/jgkorea8275/224461619969" target="_blank" rel="noopener">네이버 블로그에서 원문 보기{ic("ext")}</a></p>
+
+  <div class="tools">
+    <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+    <div class="r">
+      <button type="button" data-share>{ic("share")}공유하기</button>
+      <button type="button" data-font aria-label="글자 크기: 보통"><span class="ga" aria-hidden="true">가</span>글자 크기</button>
+    </div>
+  </div>
+
+  <nav class="related" aria-label="함께 보기">
+    <h2>함께 보기</h2>
+    <ul>
+      <li><a href="column-1.html">칼럼 · 삐끗했는데 왜 이렇게 오래 가죠?{ic("chev")}</a></li>
+      <li><a href="essay-3.html">에세이 · 몸은 쉬라고 하는데, 삶은 멈출 수 없을 때{ic("chev")}</a></li>
+      <li><a href="index.html#area">근육통·관절통 진료 안내{ic("chev")}</a></li>
+      <li><a href="index.html#treatment">치료 방법 · 침·약침·부항{ic("chev")}</a></li>
+    </ul>
+  </nav>
+</main>
+{footer()}
+{dock('index.html')}
+<script src="assets/site.js?v={VER}"></script>
+{ANALYTICS}
+</body>
+</html>
+'''
+    return head + '\n' + body
+
 def v2(html):
     html = html.replace('<body class="has-dock" id="top">', '<body class="v2" id="top">')
     a = '<body class="has-dock">'
@@ -1154,6 +1353,9 @@ def v2(html):
 # ---------------------------------------------------------------- RSS (네이버·검색엔진용 새 글 목록)
 SITE = 'https://jgkorea8275.co.kr/'
 POSTS = [  # 최신 글이 위로. 새 칼럼·에세이를 올리면 여기에 한 줄 추가
+    {'url': 'column-2.html', 'title': '"침 한방에 낫게 해주소~" 근육통 회복 속도를 결정하는 네가지 요인', 'date': 'Sun, 01 Nov 2026 23:55:00 +0900', 'cat': '칼럼',
+     'desc': '같은 근육통도 회복 속도는 다릅니다. 다친 정도, 일상 관리, 몸의 회복력, 한의사의 역할까지 네 가지 요인을 정리했습니다.',
+     'img': 'images/column-2-hero.jpg'},
     {'url': 'essay-4.html', 'title': '[에세이04] 불은 그대로인데 사이렌만 끄고 있지는 않습니까?', 'date': 'Sat, 31 Oct 2026 01:22:00 +0900', 'cat': '에세이',
      'desc': '통증주사에 익숙해진 시대, 통증이 사라져도 몸의 회복은 계속됩니다. 한방재활의학과 전문의 박장우 원장의 에세이.',
      'img': 'images/essay-4-hero.jpg'},
@@ -1212,5 +1414,6 @@ if __name__ == '__main__':
     open(os.path.join(OUT, 'essay-2.html'), 'w').write(v2(essay2()))
     open(os.path.join(OUT, 'essay-3.html'), 'w').write(v2(essay3()))
     open(os.path.join(OUT, 'essay-4.html'), 'w').write(v2(essay4()))
+    open(os.path.join(OUT, 'column-2.html'), 'w').write(v2(column2()))
     open(os.path.join(OUT, 'rss.xml'), 'w').write(rss())
     print('built')
