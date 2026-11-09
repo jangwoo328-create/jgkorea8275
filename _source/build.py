@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261106'
+VER = '20261109'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -377,6 +377,15 @@ def index():
       <a class="btn-dark" href="{BLOG}" target="_blank" rel="noopener" style="margin-top:22px">블로그에서 더 보기{ic("chev")}</a>
     </div>
     <div class="col-list">
+    <a class="colcard" href="column-4.html">
+      <img src="images/column-4-hero.jpg" alt="야간 다리 경련 · 자다가 종아리에 쥐가 나요" width="743" height="743" loading="lazy">
+      <div class="body">
+        <span class="chip">칼럼 · 야간 다리 경련</span>
+        <h3>자다가 종아리에 쥐가 나요 (야간 하지 경련의 원인과 대처법)</h3>
+        <p>밤에 종아리에 쥐가 나는 이유와 잘 생기는 조건, 중풍과 구별하는 법, 쥐가 났을 때 대처법 4가지와 예방 스트레칭을 정리했습니다.</p>
+        <time datetime="2026-11-08">2026.11.08</time>
+      </div>
+    </a>
     <a class="colcard" href="column-3.html">
       <img src="images/column-3-hero.jpg" alt="오십견·어깨 통증 · 어깨가 아프면 다 오십견일까요?" width="743" height="743" loading="lazy">
       <div class="body">
@@ -462,9 +471,9 @@ def index():
     <div class="hrs-grid">
       <div class="hrs-card" id="hours">
         <dl class="hrs">
-          <div class="hrs-row"><dt>평일 <small>월 – 금</small></dt><dd>오전 9:00 – 오후 7:00</dd></div>
+          <div class="hrs-row main"><dt>평일 <small>월 – 금</small></dt><dd class="big"><span class="ap">오전</span><b>9:00</b><span class="tl">~</span><span class="ap">오후</span><b>7:00</b></dd></div>
           <div class="hrs-row sub"><dt>점심시간</dt><dd>오후 1:00 – 2:00</dd></div>
-          <div class="hrs-row"><dt>토요일</dt><dd>오전 9:00 – 오후 1:00</dd></div>
+          <div class="hrs-row main"><dt>토요일</dt><dd class="big"><span class="ap">오전</span><b>9:00</b><span class="tl">~</span><span class="ap">오후</span><b>1:00</b></dd></div>
           <div class="hrs-row off"><dt>일요일 · 공휴일</dt><dd>휴진</dd></div>
         </dl>
       </div>
@@ -1575,6 +1584,7 @@ def column3():
   <nav class="related" aria-label="함께 보기">
     <h2>함께 보기</h2>
     <ul>
+      <li><a href="column-4.html">칼럼 · 자다가 종아리에 쥐가 나요{ic("chev")}</a></li>
       <li><a href="column-2.html">칼럼 · 근육통 회복 속도를 결정하는 네가지 요인{ic("chev")}</a></li>
       <li><a href="column-1.html">칼럼 · 삐끗했는데 왜 이렇게 오래 가죠?{ic("chev")}</a></li>
       <li><a href="index.html#area">근육통·관절통 진료 안내{ic("chev")}</a></li>
@@ -1610,6 +1620,9 @@ def v2(html):
 # ---------------------------------------------------------------- RSS (네이버·검색엔진용 새 글 목록)
 SITE = 'https://jgkorea8275.co.kr/'
 POSTS = [  # 최신 글이 위로. 새 칼럼·에세이를 올리면 여기에 한 줄 추가
+    {'url': 'column-4.html', 'title': '자다가 종아리에 쥐가 나요 (야간 하지 경련의 원인과 대처법)', 'date': 'Sun, 08 Nov 2026 16:33:00 +0900', 'cat': '칼럼',
+     'desc': '밤에 자다가 종아리에 쥐가 나는 야간 하지 경련. 원인과 증상, 쥐가 났을 때 대처법 4가지, 예방 스트레칭과 한방 치료를 정리했습니다.',
+     'img': 'images/column-4-hero.jpg'},
     {'url': 'column-3.html', 'title': '어깨가 아프면 다 오십견일까요? (오십견의 특징과 운동법)', 'date': 'Wed, 04 Nov 2026 22:24:00 +0900', 'cat': '칼럼',
      'desc': '어깨가 아프다고 다 오십견은 아닙니다. 오십견의 특징과 혼동하기 쉬운 질환, 경과와 치료, 집에서 하는 운동법까지 정리했습니다.',
      'img': 'images/column-3-hero.jpg'},
