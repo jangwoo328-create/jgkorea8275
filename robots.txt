@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://jgkorea8275.co.kr/sitemap.xml
+
+#DaumWebMasterTool:d808a951c9eb5f0537eebfea8dc4b337df700be50da40d2263a07584c58b55cd:rbSFXQUyqc9N1qm+e2U/ew==
