@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261109'
+VER = '20261111'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -190,7 +190,7 @@ def index():
         ('car', '교통사고 후유증', '사고 이후 남은 통증과 불편을 전문적으로 진료', 'traffic-accident.html', '안내 보기', True),
         ('spine', '허리·목디스크', '허리통증·다리 저림<br>목통증·팔 저림', 'https://blog.naver.com/jgkorea8275/221188934176', '방송 출연분 보기', False),
         ('knee', '근육통·관절통', '어깨·팔꿈치·손목 통증<br>고관절·무릎·발목 통증', None, None, False),
-        ('neck', '담결림', '목과 등의 담을 사혈부항과 침, 약침 등을 이용해 치료', None, None, False),
+        ('neck', '담결림', '목과 등의 담을 사혈부항과 침, 약침 등을 이용해 치료', 'column-5.html', '칼럼 보기', False),
         ('bowl', '보약 처방', '체질과 상태에 따른 보약을 원장이 직접 조제', 'https://blog.naver.com/jgkorea8275/221188922757', '방송 출연분 보기', False),
     ]
     cards = ''
@@ -377,6 +377,15 @@ def index():
       <a class="btn-dark" href="{BLOG}" target="_blank" rel="noopener" style="margin-top:22px">블로그에서 더 보기{ic("chev")}</a>
     </div>
     <div class="col-list">
+    <a class="colcard" href="column-5.html">
+      <img src="images/column-5-hero.jpg" alt="목 담결림 · 자고 일어났더니 목이 안 돌아가요" width="743" height="743" loading="lazy">
+      <div class="body">
+        <span class="chip">칼럼 · 목 담결림</span>
+        <h3>자고 일어났더니 목이 안 돌아가요 (목 담결림·낙침)</h3>
+        <p>목 담결림이 생기는 네 가지 이유, 그냥 둘 때와 침치료를 받을 때의 경과, 빨리 회복하는 법과 바로 진료가 필요한 경우를 정리했습니다.</p>
+        <time datetime="2026-11-10">2026.11.10</time>
+      </div>
+    </a>
     <a class="colcard" href="column-4.html">
       <img src="images/column-4-hero.jpg" alt="야간 다리 경련 · 자다가 종아리에 쥐가 나요" width="743" height="743" loading="lazy">
       <div class="body">
@@ -1601,6 +1610,248 @@ def column3():
 '''
     return head + '\n' + body
 
+COL5_URL = 'https://jgkorea8275.co.kr/column-5.html'
+COL5_TITLE = '자고 일어났더니 목이 안 돌아가요 — 목 담결림(낙침) 원인, 경과, 침치료, 주의사항'
+COL5_LD = {"@context": "https://schema.org", "@type": "Article", "headline": "자고 일어났더니 목이 안 돌아가요 — 목 담결림(낙침) 원인, 경과, 침치료, 주의사항", "datePublished": "2026-11-10", "image": ["https://jgkorea8275.co.kr/images/column-5-hero.jpg"], "mainEntityOfPage": "https://jgkorea8275.co.kr/column-5.html", "author": {"@type": "Person", "name": "박장우", "jobTitle": "한의학박사, 한방재활의학과 전문의"}, "publisher": {"@type": "Organization", "name": "정관고려한의원", "logo": {"@type": "ImageObject", "url": "https://jgkorea8275.co.kr/favicon.png"}}}
+COL5_CRUMB = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "정관고려한의원", "item": "https://jgkorea8275.co.kr/"},
+    {"@type": "ListItem", "position": 2, "name": "칼럼 및 에세이", "item": "https://jgkorea8275.co.kr/#column"},
+    {"@type": "ListItem", "position": 3, "name": "자고 일어났더니 목이 안 돌아가요", "item": "https://jgkorea8275.co.kr/column-5.html"}]}
+
+def column5():
+    title = COL5_TITLE.replace('"', '&quot;')
+    title_plain = title
+    title_attr = title
+    desc = '자고 일어났더니 목이 안 돌아가는 목 담결림(낙침). 원인 네 가지와 자연경과·침치료 경과, 빨리 회복하는 법, 바로 진료가 필요한 경우를 정리했습니다.'
+    toc = [('s1', '목의 담결림, 낙침이란?'), ('s2', '왜 생기는 걸까요?'), ('s3', '경과는 어떻게 될까요? — 자연경과 vs 침치료'),
+           ('s4', '빨리 회복하려면 이것 만은 지켜 주세요'), ('s5', '마지막으로 제일 중요! 이럴 땐 바로 진료를 받으세요')]
+    chk = lambda t: f'<li>{ic("check")}<span>{t}</span></li>'
+    toc_html = ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc)
+    head = f'''<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{title_plain} | 칼럼 | 정관고려한의원</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{desc}">
+<meta name="theme-color" content="#171511">
+<link rel="canonical" href="{COL5_URL}">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="alternate" type="application/rss+xml" title="정관고려한의원 칼럼·에세이" href="https://jgkorea8275.co.kr/rss.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="정관고려한의원">
+<meta property="og:title" content="{title_attr} | 정관고려한의원 칼럼">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{COL5_URL}">
+<meta property="og:image" content="https://jgkorea8275.co.kr/images/column-5-hero.jpg">
+<meta property="og:image:width" content="743">
+<meta property="og:image:height" content="743">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jgkorea8275.co.kr/images/column-5-hero.jpg">
+<meta property="article:published_time" content="2026-11-10">
+<script type="application/ld+json">{json.dumps(COL5_LD, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(COL5_CRUMB, ensure_ascii=False)}</script>
+{FONTS}
+<link rel="stylesheet" href="assets/site.css?v={VER}">
+</head>'''
+
+    body = f'''<body class="has-dock">
+{SPRITE}
+{header('index.html')}
+<div class="cbanner">
+  <img src="images/column-banner.jpg" alt="" width="1600" height="900">
+  <div class="wrap"><p class="ttl">건강 칼럼</p><p>진료실에서 자주 받는 질문을 쉽게 풀어 씁니다.</p></div>
+</div>
+<main class="art column">
+  <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+  <header class="art-head">
+    <span class="chip">칼럼 · 목 담결림</span>
+    <h1>{title}</h1>
+    
+    <p class="art-meta"><span><time datetime="2026-11-10">2026.11.10</time></span><span>정관고려한의원 건강 칼럼</span></p>
+  </header>
+
+  <section class="sum" aria-labelledby="sum-h">
+    <h2 id="sum-h">이 글에서 알 수 있는 내용</h2>
+    <ul>
+      {chk('목 담결림(낙침)은 왜 생기고, 목디스크와 어떻게 다를까요')}
+      {chk('그냥 둘 때와 침치료를 받을 때의 경과')}
+      {chk('빨리 회복하는 법과 바로 진료가 필요한 경우')}
+    </ul>
+    <details class="toc"><summary>목차 보기{ic("down")}</summary><ol>{toc_html}</ol></details>
+  </section>
+
+  <div class="prose" data-size="0">
+    <figure><img src="images/column-5-hero.jpg" alt="담결림 · “원장님, 혹시 디스크는 아니죠?” 자고 일어나니 목이 안 돌아가요 · 목 담결림(낙침), 원인과 경과·침치료" width="743" height="743"></figure>
+
+    <p class="lead-quote">"원장님, 자고 일어났더니 갑자기 목이 안 돌아가요."</p>
+    <p>가끔 이렇게 목을 부여잡고 힘들어 하며 진료실에 들어오시는 환자분이 계십니다.</p>
+    <figure><img src="images/column-5-stiff.jpg" alt="목 뒤를 손으로 감싸 쥐고 아파서 얼굴을 찡그리는 남성" width="743" height="498" loading="lazy"></figure>
+    <p>자고 일어나 갑자기 목이 아프고 잘 안 돌아가는 걸 한방에서는 '<b>낙침(落枕)</b>'이라고 합니다.<br>낙침이 세게 오면 처음 며칠은 꽤 힘들 수 있습니다.</p>
+    <p>오늘은 왜 이런 현상이 생기는지, 얼마나 지나야 풀리는지, 집에서는 뭘 조심하면 좋은지 말씀드리겠습니다.</p>
+
+    <h2 id="s1">목의 담결림, 낙침이란?</h2>
+    <p>"<b>담 결렸다</b>"는 말은 다들 한 번 쯤 들어보거나 써 보셨을 겁니다.<br>그중에서도 자고 일어나서 생긴 목 담결림을 <b>낙침</b>(落枕)이라고 부릅니다.<br>베개에서 목이 떨어진 채로 잤다는 뜻입니다~</p>
+    <p>양방에서는 보통 목 근육이 갑자기 뭉친 <b>급성 경부통</b>(영어로는 흔히 stiff neck)으로 봅니다.</p>
+
+    <h3 class="sub-h">목 안에서는 무슨 일이 일어난 걸까요?</h3>
+    <p>목 근육이 한계를 넘으면, 더 다치지 않으려고 근육이 스스로 <b>꽉 붙잡고 버티는 상태</b>가 됩니다.<br>고개를 돌리려 하면 이 근육이 "움직이지 마!" 하고 더 세게 버티니, 아프고 돌아가지 않는 것입니다.</p>
+
+    <h3 class="sub-h">이런 증상이 나타납니다</h3>
+    <ul class="checks">
+      <li>{ic("check")}<span>아침에 일어나자마자 목이 아프고 깁스한 것처럼 잘 안 돌아갑니다.</span></li>
+      <li>{ic("check")}<span>한쪽으로 돌리거나 기울일 때 <b>"악!"</b> 소리가 날 만큼 아픕니다.</span></li>
+      <li>{ic("check")}<span>날개뼈 안쪽, 어깨 위까지 당깁니다.</span></li>
+      <li>{ic("check")}<span>아픈 쪽을 피하려고 고개가 한쪽으로 살짝 기운 채 지내기도 합니다.</span></li>
+    </ul>
+
+    <h3 class="sub-h">목디스크와는 어떻게 다를까요?</h3>
+    <p>많은 분들이 "혹시 디스크 아닌가요?" 하고 걱정하십니다.</p>
+    <p>목디스크는 팔이나 손까지 통증이 뻗치거나, 저리거나 힘이 빠지기도 합니다.<br>하지만, 담결림은 목과 어깨 주변만 뭉치고 아픕니다.</p>
+
+    <h2 id="s2">왜 생기는 걸까요?</h2>
+    <p>원인은 크게 네 가지입니다.<br>한 가지 만으로 생기기도 하고, 두 세 가지가 겹치는 경우도 많습니다.</p>
+
+    <h3 class="factor"><span>① 우선, 평소 쌓인 목 근육의 피로입니다</span></h3>
+    <p>목 근육은 하루 종일 무거운 머리를 받치고 있습니다.<br>이 피로가 조금씩 쌓이다가 <b>임계점을 넘는 순간</b> 탈이 납니다.</p>
+    <p>같은 베개를 수 년 간 베셨는데 왜 하필 오늘 아침일까요?<br>그동안 쌓인 피로가 넘친 날이기 때문입니다.</p>
+    <ul class="checks">
+      <li>{ic("check")}<span>오랜 시간 스마트폰·컴퓨터 보기</span></li>
+      <li>{ic("check")}<span>장거리 운전</span></li>
+      <li>{ic("check")}<span>이사, 김장처럼 평소 안 하던 일로 무리</span></li>
+      <li>{ic("check")}<span>잠이 부족했거나, 스트레스가 많았던 날</span></li>
+    </ul>
+
+    <h3 class="factor"><span>② 두 번째로, 자는 동안의 나쁜 자세입니다</span></h3>
+    <ul class="checks">
+      <li>{ic("check")}<span>엎드려서 고개를 한쪽으로 돌리고 자기</span></li>
+      <li>{ic("check")}<span>소파나 의자에서 고개를 떨군 채 졸기</span></li>
+      <li>{ic("check")}<span>너무 높은 베개, 또는 옆으로 누웠을 때 너무 낮은 베개</span></li>
+    </ul>
+    <figure><img src="images/column-5-sleep.jpg" alt="엎드려 고개를 한쪽으로 돌리고 자는 모습과 소파에 앉아 고개를 떨군 채 조는 모습" width="743" height="498" loading="lazy"></figure>
+    <p>자는 동안에는 불편해도 자세를 고치지 못하니, 목 근육이 몇 시간 씩 한쪽으로 당겨진 채 버티게 됩니다.</p>
+
+    <h3 class="factor"><span>③ 그 다음! 찬바람입니다</span></h3>
+    <p>여름에는 <b>선풍기·에어컨 바람</b>, 날씨가 서늘해질 때는 <b>새벽의 찬 기운</b>이 목에 닿는 것 만으로도 근육이 움츠러듭니다.</p>
+    <p>한의학에서는 이것을 <b>풍한(風寒)</b>, 즉 찬 바람이 근육에 들어왔다고 봅니다.<br>쉽게 말해 <b>목 근육이 감기에 걸린 것</b>이죠.</p>
+    <p>그래서 에어컨을 많이 트는 한여름과, 일교차가 큰 환절기에 목 담결림이 유독 많습니다.</p>
+
+    <h3 class="factor"><span>④ 마지막으로, 기저 질환이 있는 경우입니다</span></h3>
+    <p><b>일자목, 목디스크, 반복되는 목 통증</b>처럼 목에 구조적인 문제가 있는 분들은 목 담결림이 자주 재발하거나 회복이 더딜 수 있습니다.</p>
+
+    <h2 id="s3">경과는 어떻게 될까요? — 자연경과 vs 침치료</h2>
+    <p>이게 제일 궁금해 하실 부분인데요.</p>
+
+    <h3 class="sub-h">그냥 두면 (자연경과)</h3>
+    <p>목 담결림은 기본적으로 <b>저절로 좋아지는 병</b>입니다.<sup>1</sup> 하지만 바로 좋아지지는 않습니다.</p>
+    <p>저는 환자분들께 이렇게 말씀드립니다.</p>
+    <p class="key"><b>"목 근육에 감기몸살 걸렸다고 생각하세요."</b></p>
+    <p>감기몸살도 하루 만에 낫지 않고, 2~3일은 더 심해졌다가 좋아지는 경우가 많죠? 담결림도 똑같습니다. 처음 며칠은 더 심해지기도 합니다.</p>
+    <p>회복되는 데 걸리는 기간도 감기처럼, 며칠이나 1주일 안에 낫는 분도 있고 2~3주 가는 분도 있습니다.</p>
+    <p>그래서 처음 오신 분께 미리 말씀드립니다.</p>
+    <p class="key"><b>"담 쎄게 오면 처음 2~3일은 뭘 해도 힘듭니다. 원래 그런 거니 너무 걱정하지 마세요."</b></p>
+    <p>환자분들은 하루 아침에 갑자기 고개를 못 돌리니 '이거 큰 병 아닌가?', '혹시 이러다가 큰 일 나는 건 아닐까?' 불안해 하시거든요.</p>
+
+    <h3 class="sub-h">침치료를 받으면</h3>
+    <p><b>가볍게 담이 온 분</b>은 며칠 사이에 한결 편해지기도 합니다.</p>
+    <p>하지만, <b>고개가 아예 안 돌아갈 만큼 심하게 온 분</b>은 침을 맞아도 처음 2~3일 정도는 힘들 수 있습니다.</p>
+    <p>아래 그래프와 영상은 <b>담결림이 심하게 온 분</b>들의 경과를 제가 진료실에서 본 경험을 바탕으로 그린 예시입니다.</p>
+    <figure><img src="images/column-5-course.jpg" alt="심한 목 담결림의 침치료 경과 예시: 고개가 아예 안 돌아갈 만큼 심한 경우, 침 하나는 침치료 받은 날. 그냥 둘 때는 통증이 오래 높게 이어지고, 침치료를 받을 때는 3일까지 진행한 뒤 꺾이기 시작해 정점을 찍고 내려오면서 좋아집니다." width="743" height="541" loading="lazy"></figure>
+    <p>움직이는 영상으로 보시면 더 쉽습니다~</p>
+    <figure class="video"><video controls playsinline preload="none" poster="images/column-5-video-poster.jpg" width="1920" height="1080" aria-label="심한 목 담결림의 경과 영상: 그냥 두었을 때는 3일까지 점점 심해지고 그 뒤로 아주 천천히 풀립니다. 침치료 1~3회는 침을 안 맞으면 더 나빠질 것을 침을 맞아서 좀 덜 나빠지게 합니다. 침치료 4~5회에 통증이 정점을 찍고 꺾이기 시작하면서 좋아지기 시작하고, 6~7회에 한 계단, 8~10회에 또 한 계단 내려옵니다."><source src="videos/column-5-course.mp4" type="video/mp4"></video></figure>
+    <p>제 경험 상, 담이 세게 오면 침을 맞아도 처음 이틀, 사흘은 꽤 힘들 수 있습니다.<br>며칠 비슷하다가 어느 날 고개가 한결 잘 돌아가는 분도 계십니다.</p>
+    <p class="note">영상 속 치료 횟수는 이런 경과를 설명하기 위한 예시입니다. 좋아지기 시작하는 시점과 필요한 치료 횟수는 사람마다 다릅니다.</p>
+    <p>2024년에 낙침 환자를 대상으로 한 여러 임상 시험을 종합한 연구에서, 침치료를 받은 쪽의 통증이 더 줄고 목을 움직이는 범위도 더 넓어졌다고 보고했습니다.<sup>3</sup></p>
+    <p>정관고려한의원에서는 목 담결림 치료를 위해 <b>침·전침, 부항(습식, 건식), 약침, 전자뜸, 온찜질, 물리치료</b> 등을 시행합니다.</p>
+
+    <h2 id="s4">빨리 회복하려면 이것 만은 지켜 주세요</h2>
+
+    <h3 class="factor"><span>① 따뜻하게 해 주세요</span></h3>
+    <ul class="checks">
+      <li>{ic("check")}<span><b>온찜질</b></span></li>
+      <li>{ic("check")}<span><b>사우나, 온수 샤워</b></span></li>
+    </ul>
+    <p>따뜻한 샤워 물을 목에 맞으면서, 손으로 머리를 가볍게 밀어 주며 스트레칭 하는 것도 좋은 방법입니다.</p>
+    <figure><img src="images/column-5-shower.jpg" alt="따뜻한 샤워 물을 목에 맞으며 손으로 머리를 가볍게 옆으로 밀어 목을 스트레칭하는 모습 세 장면" width="743" height="315" loading="lazy"></figure>
+
+    <h3 class="factor"><span>② 찬바람과 냉찜질은 피해 주세요</span></h3>
+    <p>아프다고 얼음찜질을 하시는 분들이 계시는데, 담결림에는 <b>냉찜질이 맞지 않습니다.</b></p>
+    <p>선풍기·에어컨 바람도 목에 직접 닿지 않게 해 주세요. 얇은 목도리도 좋습니다~</p>
+
+    <h3 class="factor"><span>③ 충분히 쉬고, 푹 주무세요</span></h3>
+    <p>지친 근육이 회복하려면 충분한 휴식과 잠이 필요합니다.<br>아픈 동안에는 야근이나 무리한 일정을 조금 줄여 보시기 바랍니다.</p>
+
+    <h3 class="factor"><span>④ 억지로 돌리거나 세게 주무르지 마세요</span></h3>
+    <p>"풀어야지" 하고 아픈 쪽으로 자꾸 돌려 보거나, 세게 주물러 "뚝" 소리를 내면 굳은 근육이 더 놀라 단단히 버티게 됩니다.</p>
+    <p><b>아프지 않은 범위 안에서만</b> 천천히 움직이시면 됩니다.</p>
+    <p>그렇다고 꼼짝 않고 있는 것도 좋지 않습니다. 목 보호대도 요즘은 권하지 않습니다.<sup>2</sup> 오히려 더 굳을 수 있기 때문입니다.</p>
+
+    <h3 class="factor"><span>⑤ 운전은 특히 조심하세요</span></h3>
+    <p>고개가 잘 안 돌아가 옆이나 뒤를 살피기 어렵다면 운전은 미루세요.</p>
+
+    <h2 id="s5">마지막으로 제일 중요! 이럴 땐 바로 진료를 받으세요</h2>
+    <ul class="checks">
+      <li>{ic("check")}<span><b>목이 뻣뻣하면서 열이 나거나 심한 두통이 있으면 바로 응급 진료를 받으세요.<br>아이가 열이 나면서 목을 잘 못 움직일 때도 마찬가지 입니다.</b></span></li>
+      <li>{ic("check")}<span>사고 뒤 목이 아프거나 새로 팔·손이 저리거나 힘이 빠지면 신속히 진료 받으세요.</span></li>
+      <li>{ic("check")}<span>통증이 계속 심해지거나 며칠이 지나도 풀리는 기미가 없으면 진료를 받으세요.</span></li>
+    </ul>
+
+    <p>목은 하루에도 수백 번 움직이며 무거운 머리를 받치고 있습니다.</p>
+    <p>담 결림은 그동안 쌓인 피로에 목이 보내는 "<b>잠깐 쉬어 가자</b>"는 신호입니다.</p>
+    <p>이번 기회에 그동안 쌓인 목의 피로도 한번 풀어 주시기 바랍니다.^^</p>
+    <p class="sign">한의학박사 · 한방재활의학과 전문의 <b>박장우</b></p>
+
+    <details class="refs">
+      <summary>참고 자료 · 그림 출처{ic("down")}</summary>
+      <ol>
+        <li>Vasseljen O, et al. Natural course of acute neck and low back pain in the general population: the HUNT study. Pain. 2013. <a href="https://doi.org/10.1016/j.pain.2013.03.032" target="_blank" rel="noopener">doi.org/10.1016/j.pain.2013.03.032</a></li>
+        <li>Patient.info — Torticollis (목 보호대 비권장). <a href="https://patient.info/health/torticollis-leaflet/symptoms-and-diagnosis" target="_blank" rel="noopener">patient.info</a></li>
+        <li>Efficacy and safety of acupuncture treatment for stiff neck: A systematic review and meta-analysis. Medicine (Baltimore). 2024. <a href="https://doi.org/10.1097/MD.0000000000040415" target="_blank" rel="noopener">doi.org/10.1097/MD.0000000000040415</a></li>
+      </ol>
+      <p class="refs-h">그림 출처</p>
+      <ul>
+        <li>삽화: 이 칼럼을 위해 새로 제작한 그림입니다.</li>
+      </ul>
+    </details>
+  </div>
+
+  <aside class="ccta" aria-label="진료 안내">
+    <div class="ccta-top"><img src="images/c9de5ada.png" alt="" width="220" height="220"><div><b>정관고려한의원 진료 안내</b><p>예약 없이 방문하세요. {ADDR}</p></div></div>
+    <div class="acts"><a class="btn-gold" href="{TEL_HREF}">{ic("phone")}전화 문의 {TEL}</a><a class="btn-line" href="index.html#hours">진료시간</a></div>
+  </aside>
+
+  <p class="src-link"><a href="https://blog.naver.com/jgkorea8275/224472243346" target="_blank" rel="noopener">네이버 블로그에서 원문 보기{ic("ext")}</a></p>
+
+  <div class="tools">
+    <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+    <div class="r">
+      <button type="button" data-share>{ic("share")}공유하기</button>
+      <button type="button" data-font aria-label="글자 크기: 보통"><span class="ga" aria-hidden="true">가</span>글자 크기</button>
+    </div>
+  </div>
+
+  <nav class="related" aria-label="함께 보기">
+    <h2>함께 보기</h2>
+    <ul>
+      <li><a href="column-2.html">칼럼 · 근육통 회복 속도를 결정하는 네가지 요인{ic("chev")}</a></li>
+      <li><a href="column-1.html">칼럼 · 삐끗했는데 왜 이렇게 오래 가죠?{ic("chev")}</a></li>
+      <li><a href="column-3.html">칼럼 · 어깨가 아프면 다 오십견일까요?{ic("chev")}</a></li>
+      <li><a href="index.html#area">담결림 진료 안내{ic("chev")}</a></li>
+      <li><a href="index.html#treatment">치료 방법 · 침·약침·부항{ic("chev")}</a></li>
+    </ul>
+  </nav>
+</main>
+{footer()}
+{dock('index.html')}
+<script src="assets/site.js?v={VER}"></script>
+{ANALYTICS}
+</body>
+</html>
+'''
+    return head + '\n' + body
+
 def v2(html):
     html = html.replace('<body class="has-dock" id="top">', '<body class="v2" id="top">')
     a = '<body class="has-dock">'
@@ -1620,6 +1871,9 @@ def v2(html):
 # ---------------------------------------------------------------- RSS (네이버·검색엔진용 새 글 목록)
 SITE = 'https://jgkorea8275.co.kr/'
 POSTS = [  # 최신 글이 위로. 새 칼럼·에세이를 올리면 여기에 한 줄 추가
+    {'url': 'column-5.html', 'title': '자고 일어났더니 목이 안 돌아가요 — 목 담결림(낙침) 원인, 경과, 침치료, 주의사항', 'date': 'Tue, 10 Nov 2026 23:05:00 +0900', 'cat': '칼럼',
+     'desc': '자고 일어났더니 목이 안 돌아가는 목 담결림(낙침). 원인 네 가지와 자연경과·침치료 경과, 빨리 회복하는 법, 바로 진료가 필요한 경우를 정리했습니다.',
+     'img': 'images/column-5-hero.jpg'},
     {'url': 'column-4.html', 'title': '자다가 종아리에 쥐가 나요 (야간 하지 경련의 원인과 대처법)', 'date': 'Sun, 08 Nov 2026 16:33:00 +0900', 'cat': '칼럼',
      'desc': '밤에 자다가 종아리에 쥐가 나는 야간 하지 경련. 원인과 증상, 쥐가 났을 때 대처법 4가지, 예방 스트레칭과 한방 치료를 정리했습니다.',
      'img': 'images/column-4-hero.jpg'},
@@ -1689,5 +1943,6 @@ if __name__ == '__main__':
     open(os.path.join(OUT, 'essay-4.html'), 'w').write(v2(essay4()))
     open(os.path.join(OUT, 'column-2.html'), 'w').write(v2(column2()))
     open(os.path.join(OUT, 'column-3.html'), 'w').write(v2(column3()))
+    open(os.path.join(OUT, 'column-5.html'), 'w').write(v2(column5()))
     open(os.path.join(OUT, 'rss.xml'), 'w').write(rss())
     print('built')
