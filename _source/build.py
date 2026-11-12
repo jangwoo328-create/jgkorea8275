@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261112'
+VER = '20261112b'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -148,8 +148,14 @@ TV_SPINE = [('1부', '허리디스크의 진단', 'https://blog.naver.com/jgkore
             ('4부', '허리디스크의 한방치료', 'https://blog.naver.com/jgkorea8275/223450881863'),
             ('통합본', '1~4부 한 번에 보기', 'https://blog.naver.com/jgkorea8275/221188934176')]
 TV_SPINE_SERIES = '[요통과 허리디스크]'
-def tv_sheet(sid, title, items):
-    lis = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener"><span class="n">{n}</span><span class="t"><small>{TV_SPINE_SERIES}</small>{t}</span>{ic("ext")}</a></li>' for n, t, u in items)
+TV_BOYAK = [('1부', '오해의 종류와 녹용', 'https://blog.naver.com/jgkorea8275/223459097458'),
+            ('2부', '노년보약, 여름보약', 'https://blog.naver.com/jgkorea8275/223459148340'),
+            ('3부', '금기식? 먹고 살찌는 거 아닌가?', 'https://blog.naver.com/jgkorea8275/223459164071'),
+            ('4부', '한약과 간(肝)', 'https://blog.naver.com/jgkorea8275/223459177910'),
+            ('통합본', '1~4부 한 번에 보기', 'https://blog.naver.com/jgkorea8275/221188922757')]
+TV_BOYAK_SERIES = '[한약에 대한 오해와 진실]'
+def tv_sheet(sid, title, items, series=TV_SPINE_SERIES):
+    lis = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener"><span class="n">{n}</span><span class="t"><small>{series}</small>{t}</span>{ic("ext")}</a></li>' for n, t, u in items)
     return (f'    <dialog class="sheet" id="{sid}" aria-labelledby="{sid}-h"><div class="sheet-in">'
             f'<div class="sheet-hd"><p class="sheet-k">방송 출연분</p><h3 id="{sid}-h">{title}</h3>'
             f'<button type="button" class="sheet-x" aria-label="닫기">{ic("x")}</button></div>'
@@ -203,7 +209,7 @@ def index():
         ('spine', '허리·목디스크', '허리통증·다리 저림<br>목통증·팔 저림', '#tv-spine', '방송 출연분 보기', False),
         ('knee', '근육통·관절통', '어깨·팔꿈치·손목 통증<br>고관절·무릎·발목 통증', None, None, False),
         ('neck', '담결림', '목과 등의 담을 사혈부항과 침, 약침 등을 이용해 치료', 'column-5.html', '칼럼 보기', False),
-        ('bowl', '보약 처방', '체질과 상태에 따른 보약을 원장이 직접 조제', 'https://blog.naver.com/jgkorea8275/221188922757', '방송 출연분 보기', False),
+        ('bowl', '보약 처방', '체질과 상태에 따른 보약을 원장이 직접 조제', '#tv-boyak', '방송 출연분 보기', False),
     ]
     cards = ''
     for icon, t, d, href, go, badge in areas:
@@ -309,7 +315,7 @@ def index():
     <h2>주요 진료 분야</h2>
     <p class="lead"><b class="lead-em">한방재활의학과 전문의</b>가 통증이 생긴 원인부터 살펴 진료합니다. 특히 교통사고 후유증을 전문적으로 봅니다.</p>
     <div class="areas">{cards}</div>
-{tv_sheet("tv-spine", "허리·목디스크", TV_SPINE)}
+{tv_sheet("tv-spine", "허리·목디스크", TV_SPINE)}{tv_sheet("tv-boyak", "보약 처방", TV_BOYAK, TV_BOYAK_SERIES)}
   </div>
 </section>
 
