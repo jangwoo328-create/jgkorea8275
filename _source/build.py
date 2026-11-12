@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261111'
+VER = '20261112'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -142,6 +142,18 @@ def dock(prefix=''):
 </div>'''
 
 # ---------------------------------------------------------------- index
+TV_SPINE = [('1부', '허리디스크의 진단', 'https://blog.naver.com/jgkorea8275/223447810095'),
+            ('2부', '허리디스크 수술해야 하나?', 'https://blog.naver.com/jgkorea8275/223450860463'),
+            ('3부', '허리디스크의 비수술적 치료', 'https://blog.naver.com/jgkorea8275/223450870734'),
+            ('4부', '허리디스크의 한방치료', 'https://blog.naver.com/jgkorea8275/223450881863'),
+            ('통합본', '1~4부 한 번에 보기', 'https://blog.naver.com/jgkorea8275/221188934176')]
+TV_SPINE_SERIES = '[요통과 허리디스크]'
+def tv_sheet(sid, title, items):
+    lis = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener"><span class="n">{n}</span><span class="t"><small>{TV_SPINE_SERIES}</small>{t}</span>{ic("ext")}</a></li>' for n, t, u in items)
+    return (f'    <dialog class="sheet" id="{sid}" aria-labelledby="{sid}-h"><div class="sheet-in">'
+            f'<div class="sheet-hd"><p class="sheet-k">방송 출연분</p><h3 id="{sid}-h">{title}</h3>'
+            f'<button type="button" class="sheet-x" aria-label="닫기">{ic("x")}</button></div>'
+            f'<ol class="sheet-list">{lis}</ol><p class="sheet-note">네이버 블로그에서 영상이 열립니다.</p></div></dialog>\n')
 CLINIC_LD = {"@context": "https://schema.org", "@type": "MedicalClinic", "name": "정관고려한의원", "url": "https://jgkorea8275.co.kr/", "telephone": "+82-51-727-8275", "image": "https://jgkorea8275.co.kr/og-image-2.jpg", "logo": "https://jgkorea8275.co.kr/images/c9de5ada.png", "description": "부산 기장군 정관읍 정관고려한의원. 한의학박사·한방재활의학과 전문의가 직접 진료합니다. 교통사고 후유증, 허리·목디스크, 근육통·관절통, 담결림, 보약. 예약 없이 방문 가능. 051-727-8275", "medicalSpecialty": "Physiatry", "address": {"@type": "PostalAddress", "streetAddress": "정관4로 37 2층", "addressLocality": "기장군 정관읍", "addressRegion": "부산광역시", "addressCountry": "KR"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "13:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "14:00", "closes": "19:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}], "founder": {"@type": "Person", "name": "박장우", "jobTitle": "대표원장"}, "foundingDate": "2010", "sameAs": ["https://blog.naver.com/jgkorea8275"]}
 
 FAQS = [
@@ -188,7 +200,7 @@ def spin(items, label, ratio, cls='', extra=''):
 def index():
     areas = [
         ('car', '교통사고 후유증', '사고 이후 남은 통증과 불편을 전문적으로 진료', 'traffic-accident.html', '안내 보기', True),
-        ('spine', '허리·목디스크', '허리통증·다리 저림<br>목통증·팔 저림', 'https://blog.naver.com/jgkorea8275/221188934176', '방송 출연분 보기', False),
+        ('spine', '허리·목디스크', '허리통증·다리 저림<br>목통증·팔 저림', '#tv-spine', '방송 출연분 보기', False),
         ('knee', '근육통·관절통', '어깨·팔꿈치·손목 통증<br>고관절·무릎·발목 통증', None, None, False),
         ('neck', '담결림', '목과 등의 담을 사혈부항과 침, 약침 등을 이용해 치료', 'column-5.html', '칼럼 보기', False),
         ('bowl', '보약 처방', '체질과 상태에 따른 보약을 원장이 직접 조제', 'https://blog.naver.com/jgkorea8275/221188922757', '방송 출연분 보기', False),
@@ -197,7 +209,9 @@ def index():
     for icon, t, d, href, go, badge in areas:
         b = '<span class="badge">전문의</span>' if badge else ''
         inner = f'{ill(icon)}<div class="txt"><h3>{t}</h3><p>{d}</p>' + (f'<span class="go">{go}{ic("chev")}</span>' if go else '') + '</div>'
-        if href:
+        if href.startswith('#tv-') if href else False:
+            cards += f'<button type="button" class="area" data-sheet="{href[1:]}" aria-haspopup="dialog">{b}{inner}</button>'
+        elif href:
             ext = ' target="_blank" rel="noopener"' if href.startswith('http') else ''
             cards += f'<a class="area" href="{href}"{ext}>{b}{inner}</a>'
         else:
@@ -295,6 +309,7 @@ def index():
     <h2>주요 진료 분야</h2>
     <p class="lead"><b class="lead-em">한방재활의학과 전문의</b>가 통증이 생긴 원인부터 살펴 진료합니다. 특히 교통사고 후유증을 전문적으로 봅니다.</p>
     <div class="areas">{cards}</div>
+{tv_sheet("tv-spine", "허리·목디스크", TV_SPINE)}
   </div>
 </section>
 
@@ -352,7 +367,7 @@ def index():
         </ul>
         <div class="socs">
           <h3 class="doc-sub">학회 활동</h3>
-          <ul><li>한방재활의학과학회 정회원</li><li>척추신경추나학회 정회원</li><li>대한약침학회 정회원</li><li>한의통증제형학회 정회원</li><li>한국 시리악스 학회 정회원</li></ul>
+          <ul><li>한방재활의학과학회 평생회원</li><li>척추신경추나학회 정회원</li><li>대한약침학회 정회원</li><li>한의통증제형학회 정회원</li><li>한국 시리악스 학회 정회원</li></ul>
         </div>
       </div>
     </div>
