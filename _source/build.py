@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261112b'
+VER = '20261113'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -154,12 +154,21 @@ TV_BOYAK = [('1부', '오해의 종류와 녹용', 'https://blog.naver.com/jgkor
             ('4부', '한약과 간(肝)', 'https://blog.naver.com/jgkorea8275/223459177910'),
             ('통합본', '1~4부 한 번에 보기', 'https://blog.naver.com/jgkorea8275/221188922757')]
 TV_BOYAK_SERIES = '[한약에 대한 오해와 진실]'
-def tv_sheet(sid, title, items, series=TV_SPINE_SERIES):
-    lis = ''.join(f'<li><a href="{u}" target="_blank" rel="noopener"><span class="n">{n}</span><span class="t"><small>{series}</small>{t}</span>{ic("ext")}</a></li>' for n, t, u in items)
+def tv_sheet(sid, title, items, series=TV_SPINE_SERIES, kicker='방송 출연분', note='네이버 블로그에서 영상이 열립니다.'):
+    def li(n, t, u):
+        sm = series if isinstance(series, str) else series[n]
+        ext = u.startswith('http')
+        tgt = ' target="_blank" rel="noopener"' if ext else ''
+        return f'<li><a href="{u}"{tgt}><span class="n{' num' if n.isdigit() else ''}">{n}</span><span class="t"><small>{sm}</small>{t}</span>{ic("ext" if ext else "chev")}</a></li>'
+    lis = ''.join(li(n, t, u) for n, t, u in items)
     return (f'    <dialog class="sheet" id="{sid}" aria-labelledby="{sid}-h"><div class="sheet-in">'
-            f'<div class="sheet-hd"><p class="sheet-k">방송 출연분</p><h3 id="{sid}-h">{title}</h3>'
+            f'<div class="sheet-hd"><p class="sheet-k">{kicker}</p><h3 id="{sid}-h">{title}</h3>'
             f'<button type="button" class="sheet-x" aria-label="닫기">{ic("x")}</button></div>'
-            f'<ol class="sheet-list">{lis}</ol><p class="sheet-note">네이버 블로그에서 영상이 열립니다.</p></div></dialog>\n')
+            f'<ol class="sheet-list">{lis}</ol><p class="sheet-note">{note}</p></div></dialog>\n')
+COL_MUSCLE = [('1', '삐끗했는데 왜 이렇게 오래 가죠? 근육·인대·힘줄 손상의 회복 이야기', 'column-1.html'),
+              ('2', '"침 한방에 낫게 해주소~" 근육통 회복 속도를 결정하는 네가지 요인', 'column-2.html'),
+              ('3', '자다가 종아리에 쥐가 나요 (야간 하지 경련의 원인과 대처법)', 'column-4.html')]
+COL_MUSCLE_TOPIC = {'1': '근육·인대·힘줄', '2': '근육통', '3': '야간 다리 경련'}
 CLINIC_LD = {"@context": "https://schema.org", "@type": "MedicalClinic", "name": "정관고려한의원", "url": "https://jgkorea8275.co.kr/", "telephone": "+82-51-727-8275", "image": "https://jgkorea8275.co.kr/og-image-2.jpg", "logo": "https://jgkorea8275.co.kr/images/c9de5ada.png", "description": "부산 기장군 정관읍 정관고려한의원. 한의학박사·한방재활의학과 전문의가 직접 진료합니다. 교통사고 후유증, 허리·목디스크, 근육통·관절통, 담결림, 보약. 예약 없이 방문 가능. 051-727-8275", "medicalSpecialty": "Physiatry", "address": {"@type": "PostalAddress", "streetAddress": "정관4로 37 2층", "addressLocality": "기장군 정관읍", "addressRegion": "부산광역시", "addressCountry": "KR"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "13:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "14:00", "closes": "19:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}], "founder": {"@type": "Person", "name": "박장우", "jobTitle": "대표원장"}, "foundingDate": "2010", "sameAs": ["https://blog.naver.com/jgkorea8275"]}
 
 FAQS = [
@@ -207,7 +216,7 @@ def index():
     areas = [
         ('car', '교통사고 후유증', '사고 이후 남은 통증과 불편을 전문적으로 진료', 'traffic-accident.html', '안내 보기', True),
         ('spine', '허리·목디스크', '허리통증·다리 저림<br>목통증·팔 저림', '#tv-spine', '방송 출연분 보기', False),
-        ('knee', '근육통·관절통', '어깨·팔꿈치·손목 통증<br>고관절·무릎·발목 통증', None, None, False),
+        ('knee', '근육통·관절통', '어깨·팔꿈치·손목 통증<br>고관절·무릎·발목 통증', '#tv-muscle', '칼럼 보기', False),
         ('neck', '담결림', '목과 등의 담을 사혈부항과 침, 약침 등을 이용해 치료', 'column-5.html', '칼럼 보기', False),
         ('bowl', '보약 처방', '체질과 상태에 따른 보약을 원장이 직접 조제', '#tv-boyak', '방송 출연분 보기', False),
     ]
@@ -315,7 +324,7 @@ def index():
     <h2>주요 진료 분야</h2>
     <p class="lead"><b class="lead-em">한방재활의학과 전문의</b>가 통증이 생긴 원인부터 살펴 진료합니다. 특히 교통사고 후유증을 전문적으로 봅니다.</p>
     <div class="areas">{cards}</div>
-{tv_sheet("tv-spine", "허리·목디스크", TV_SPINE)}{tv_sheet("tv-boyak", "보약 처방", TV_BOYAK, TV_BOYAK_SERIES)}
+{tv_sheet("tv-spine", "허리·목디스크", TV_SPINE)}{tv_sheet("tv-boyak", "보약 처방", TV_BOYAK, TV_BOYAK_SERIES)}{tv_sheet("tv-muscle", "근육통·관절통", COL_MUSCLE, COL_MUSCLE_TOPIC, "건강 칼럼", "원장이 직접 쓴 칼럼으로 이동합니다.")}
   </div>
 </section>
 
