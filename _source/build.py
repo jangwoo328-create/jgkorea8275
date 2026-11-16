@@ -167,8 +167,9 @@ def tv_sheet(sid, title, items, series=TV_SPINE_SERIES, kicker='방송 출연분
             f'<ol class="sheet-list">{lis}</ol><p class="sheet-note">{note}</p></div></dialog>\n')
 COL_MUSCLE = [('1', '삐끗했는데 왜 이렇게 오래 가죠? 근육·인대·힘줄 손상의 회복 이야기', 'column-1.html'),
               ('2', '"침 한방에 낫게 해주소~" 근육통 회복 속도를 결정하는 네가지 요인', 'column-2.html'),
-              ('3', '자다가 종아리에 쥐가 나요 (야간 하지 경련의 원인과 대처법)', 'column-4.html')]
-COL_MUSCLE_TOPIC = {'1': '근육·인대·힘줄', '2': '근육통', '3': '야간 다리 경련'}
+              ('3', '자다가 종아리에 쥐가 나요 (야간 하지 경련의 원인과 대처법)', 'column-4.html'),
+              ('4', '어깨가 아프면 다 오십견일까요? (오십견의 특징과 운동법)', 'column-3.html')]
+COL_MUSCLE_TOPIC = {'1': '근육·인대·힘줄', '2': '근육통', '3': '야간 다리 경련', '4': '오십견·어깨 통증'}
 CLINIC_LD = {"@context": "https://schema.org", "@type": "MedicalClinic", "name": "정관고려한의원", "url": "https://jgkorea8275.co.kr/", "telephone": "+82-51-727-8275", "image": "https://jgkorea8275.co.kr/og-image-2.jpg", "logo": "https://jgkorea8275.co.kr/images/c9de5ada.png", "description": "부산 기장군 정관읍 정관고려한의원. 한의학박사·한방재활의학과 전문의가 직접 진료합니다. 교통사고 후유증, 허리·목디스크, 근육통·관절통, 담결림, 보약. 예약 없이 방문 가능. 051-727-8275", "medicalSpecialty": "Physiatry", "address": {"@type": "PostalAddress", "streetAddress": "정관4로 37 2층", "addressLocality": "기장군 정관읍", "addressRegion": "부산광역시", "addressCountry": "KR"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "13:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "14:00", "closes": "19:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00"}], "founder": {"@type": "Person", "name": "박장우", "jobTitle": "대표원장"}, "foundingDate": "2010", "sameAs": ["https://blog.naver.com/jgkorea8275"]}
 
 FAQS = [
