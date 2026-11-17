@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261113'
+VER = '20261117'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -186,7 +186,7 @@ FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
 
 TREAT = [
     ('추나요법', '손으로 틀어진 척추와 관절을 바로잡아 통증을 줄이는 치료입니다.'),
-    ('침과 전침', '통증 부위와 경혈에 침을 놓고, 필요하면 전기 자극을 더해 치료합니다.'),
+    ('침과 전침', '통증 부위와 경혈에 침을 놓고, 필요하면 전기 자극을 더해 치료합니다.', ('column-6.html', '칼럼 · 침 치료 원리, 과학적으로 쉽게 설명드립니다')),
     ('전자뜸', '연기와 화상 부담 없이 환부에 온열 자극을 줍니다.'),
     ('왕뜸', '복부를 깊이 데워 순환을 돕는 전통 뜸 치료입니다. 무연뜸이라 냄새가 밸 염려가 없습니다.'),
     ('부항요법', '건식부항과 습식부항(피 뽑는 부항)을 상태에 맞게 번갈아 시행합니다.'),
@@ -236,7 +236,10 @@ def index():
 
     gal = spin(GALLERY, '한의원 사진', 640/960, 'spin-light', ' data-wide-vis="116"')
 
-    tx = ''.join(f'<details><summary><span class="n">{i:02d}</span><span class="t">{t}</span>{ic("plus","ic pl")}</summary><p{" class=\"w500\"" if t == "약침" else ""}>{d}</p></details>' for i, (t, d) in enumerate(TREAT, 1))
+    def _tx(i, t, d, more=None):
+        lk = f'<a class="tx-more" href="{more[0]}">{more[1]}{ic("chev")}</a>' if more else ''
+        return f'<details><summary><span class="n">{i:02d}</span><span class="t">{t}</span>{ic("plus","ic pl")}</summary><p{" class=\"w500\"" if t == "약침" else ""}>{d}</p>{lk}</details>'
+    tx = ''.join(_tx(i, *row) for i, row in enumerate(TREAT, 1))
 
     faq = ''.join(f'<details><summary><span class="q">Q.</span><span>{q}</span>{ic("down")}</summary><p>{a}</p></details>' for q, a in FAQS)
 
@@ -408,6 +411,15 @@ def index():
       <a class="btn-dark" href="{BLOG}" target="_blank" rel="noopener" style="margin-top:22px">블로그에서 더 보기{ic("chev")}</a>
     </div>
     <div class="col-list">
+    <a class="colcard" href="column-6.html">
+      <img src="images/column-6-hero.jpg" alt="침 치료 원리 · 침은 어떻게 통증을 줄일까요?" width="743" height="743" loading="lazy">
+      <div class="body">
+        <span class="chip">칼럼 · 침 치료 원리</span>
+        <h3>침 치료 원리, 과학적으로 쉽게 설명드립니다 (관문조절설, 엔도르핀, 전침)</h3>
+        <p>"원장님, 침은 어떻게 해서 낫는 거예요?" 고교생 환자의 질문에서 시작해, 침이 통증을 줄이는 네 가지 원리를 쉽게 풀었습니다.</p>
+        <time datetime="2026-11-17">2026.11.17</time>
+      </div>
+    </a>
     <a class="colcard" href="column-5.html">
       <img src="images/column-5-hero.jpg" alt="목 담결림 · 자고 일어났더니 목이 안 돌아가요" width="743" height="743" loading="lazy">
       <div class="body">
@@ -1883,6 +1895,195 @@ def column5():
 '''
     return head + '\n' + body
 
+COL6_URL = 'https://jgkorea8275.co.kr/column-6.html'
+COL6_TITLE = '침 치료 원리, 과학적으로 쉽게 설명드립니다 (관문조절설, 엔도르핀, 전침)'
+COL6_LD = {"@context": "https://schema.org", "@type": "Article", "headline": "침 치료 원리, 과학적으로 쉽게 설명드립니다 (관문조절설, 엔도르핀, 전침)", "datePublished": "2026-11-17", "image": ["https://jgkorea8275.co.kr/images/column-6-hero.jpg"], "mainEntityOfPage": "https://jgkorea8275.co.kr/column-6.html", "author": {"@type": "Person", "name": "박장우", "jobTitle": "한의학박사, 한방재활의학과 전문의"}, "publisher": {"@type": "Organization", "name": "정관고려한의원", "logo": {"@type": "ImageObject", "url": "https://jgkorea8275.co.kr/favicon.png"}}}
+COL6_CRUMB = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "정관고려한의원", "item": "https://jgkorea8275.co.kr/"},
+    {"@type": "ListItem", "position": 2, "name": "칼럼 및 에세이", "item": "https://jgkorea8275.co.kr/#column"},
+    {"@type": "ListItem", "position": 3, "name": "침 치료 원리, 과학적으로 쉽게 설명드립니다", "item": "https://jgkorea8275.co.kr/column-6.html"}]}
+
+def column6():
+    title = COL6_TITLE.replace('"', '&quot;')
+    title_plain = title
+    title_attr = title
+    desc = '"원장님, 침은 어떻게 해서 낫는 거예요?" 관문조절설, 몸속 진통물질(엔도르핀), 침 자리의 변화, 뇌·신경 조절까지 침 치료의 원리를 쉽게 풀었습니다.'
+    toc = [('s1', "경락은 '옛 사람들이 그린 몸의 지도'입니다"), ('s2', "① 통증이 지나가는 '문'을 조절합니다"), ('s3', '② 몸이 스스로 진통제를 만들도록 합니다'),
+           ('s4', '③ 침 맞은 자리에서도 변화가 일어납니다'), ('s5', '④ 뇌와 몸 전체가 반응합니다'), ('s6', '한눈에 정리하면'), ('s7', '다시 그 학생 이야기로 돌아와서')]
+    chk = lambda t: f'<li>{ic("check")}<span>{t}</span></li>'
+    toc_html = ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc)
+    head = f'''<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{title_plain} | 칼럼 | 정관고려한의원</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{desc}">
+<meta name="theme-color" content="#171511">
+<link rel="canonical" href="{COL6_URL}">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="alternate" type="application/rss+xml" title="정관고려한의원 칼럼·에세이" href="https://jgkorea8275.co.kr/rss.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="정관고려한의원">
+<meta property="og:title" content="{title_attr} | 정관고려한의원 칼럼">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{COL6_URL}">
+<meta property="og:image" content="https://jgkorea8275.co.kr/images/column-6-hero.jpg">
+<meta property="og:image:width" content="743">
+<meta property="og:image:height" content="743">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jgkorea8275.co.kr/images/column-6-hero.jpg">
+<meta property="article:published_time" content="2026-11-17">
+<script type="application/ld+json">{json.dumps(COL6_LD, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(COL6_CRUMB, ensure_ascii=False)}</script>
+{FONTS}
+<link rel="stylesheet" href="assets/site.css?v={VER}">
+</head>'''
+
+    body = f'''<body class="has-dock">
+{SPRITE}
+{header('index.html')}
+<div class="cbanner">
+  <img src="images/column-banner.jpg" alt="" width="1600" height="900">
+  <div class="wrap"><p class="ttl">건강 칼럼</p><p>진료실에서 자주 받는 질문을 쉽게 풀어 씁니다.</p></div>
+</div>
+<main class="art column">
+  <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+  <header class="art-head">
+    <span class="chip">칼럼 · 침 치료 원리</span>
+    <h1>{title}</h1>
+    
+    <p class="art-meta"><span><time datetime="2026-11-17">2026.11.17</time></span><span>정관고려한의원 건강 칼럼</span></p>
+  </header>
+
+  <section class="sum" aria-labelledby="sum-h">
+    <h2 id="sum-h">이 글에서 알 수 있는 내용</h2>
+    <ul>
+      {chk('경락과 경혈, 현대 과학은 어떻게 보고 있을까요')}
+      {chk('침이 통증을 줄이는 네 가지 원리')}
+      {chk('침은 몸이 스스로 진통제를 만들도록 깨우는 치료')}
+    </ul>
+    <details class="toc"><summary>목차 보기{ic("down")}</summary><ol>{toc_html}</ol></details>
+  </section>
+
+  <div class="prose" data-size="0">
+    <figure><img src="images/column-6-hero.jpg" alt="침의 원리 · “원장님, 침은 어떻게 해서 낫는 거예요?” 침은 어떻게 통증을 줄일까요? 침 치료 원리, 과학으로 쉽게 풀어 봅니다" width="743" height="743"></figure>
+
+    <p>오늘은 <b>침이 어떻게 우리 몸을 낫게 하는지</b>, 침치료의 원리에 대해 이야기해 보겠습니다.</p>
+    <p>얼마 전, 허리가 아파 침을 맞으러 오는 고교 남학생 환자가 이렇게 물었습니다.</p>
+    <p class="lead-quote">"원장님, 침은 어떻게 해서 낫는 거예요?"</p>
+    <p>그래서 이렇게 설명해 주었습니다.</p>
+    <p class="quote">"우리 몸에는 <b>경락</b>이라는, 기(氣)가 흐르는 길이 있어.<br>그 길 위의 중요한 지점을 <b>경혈</b>, 흔히 혈자리라고 하지.<br>침으로 혈자리를 자극하면 기가 잘 돌게 되고,<br>몸이 스스로 낫도록 돕는 거야."</p>
+    <p>학생이 잠시 생각하더니 웃으며 말했습니다.</p>
+    <p class="quote">"왠지…무협지 같아요.^^"</p>
+    <p>듣고 보니 그럴 만합니다.<br>혈자리, 기의 흐름.<br>무협 소설에서 많이 본 말들이니까요.</p>
+    <p>그래서 현대인의 관점에서 이해되기 쉽도록 과학적인 설명을 곁들여 주었습니다.<br>오늘은 그 내용을 조금 더 자세히 풀어 보겠습니다.</p>
+    <figure><img src="images/column-6-talk.jpg" alt="침대에 엎드려 허리에 침을 맞고 있는 학생이 고개를 돌려 웃고, 흰 가운을 입은 한의사가 손짓하며 설명하는 모습" width="743" height="557" loading="lazy"></figure>
+
+    <h2 id="s1">경락은 '옛 사람들이 그린 몸의 지도'입니다</h2>
+    <p>경락은 수천 년 동안 환자를 보며 쌓은 경험을 정리한 <b>몸의 지도</b>입니다.<br>"여기를 자극하니 저기가 편해지더라"는 관찰을 선으로 이어 놓은 것이죠.<br>하지만 현대 해부학에서 경락이라는 관이 따로 발견된 것은 아닙니다.</p>
+    <p>그렇다면 이런 질문이 생깁니다.</p>
+    <p class="quote"><b>"침을 놓으면 몸 안에서 실제로 무슨 일이 일어날까요?"</b></p>
+    <p>이 질문에 답하기 위해 미국과 유럽을 비롯한 여러 나라에서 연구가 이루어지고 있습니다.<br>1997년에는 미국 국립보건원(NIH)이 침 치료에 대한 합의 회의를 열기도 했습니다.<sup>1</sup></p>
+    <p>아직 침의 모든 원리가 밝혀진 것은 아닙니다만, 지금까지 어떤 연구가 이루어졌는지 하나씩 살펴보겠습니다.</p>
+
+    <h2 id="s2">① 통증이 지나가는 '문'을 조절합니다</h2>
+    <h3 class="sub-h">관문조절설</h3>
+    <p>어딘가에 부딪혔을 때 아픈 부위를 손으로 문지른 적 있으시죠?<br>문지르면 조금 덜 아프게 느껴질 때가 있습니다.</p>
+    <p>1965년 멜잭과 월이라는 두 학자가 이 현상을 설명했습니다.<sup>2</sup><br>척수에는 통증 신호가 뇌로 올라가는 <b>문(관문)</b>이 있는데, 만지고 누르는 자극이 먼저 들어오면 이 문이 닫혀 통증 신호가 덜 올라간다는 것입니다.<br>이것을 <b>관문조절설</b>이라고 합니다.</p>
+    <p>침 자극으로 통증이 줄어드는 과정에도 이러한 신경계의 조절이 관여할 수 있습니다.</p>
+    <figure class="tall"><img src="images/column-6-gate.jpg" alt="같은 높이의 척수로 두 신호가 함께 들어갑니다: 허리의 아픈 곳에 놓은 침 자극과 통증 신호가 함께 척수의 ‘관문’으로 들어가고, 뇌는 통증을 덜 느낍니다" width="743" height="929" loading="lazy"><figcaption>아픈 곳에 놓은 침의 자극이 척수의 문을 닫아, 통증 신호가 덜 올라가게 합니다.</figcaption></figure>
+    <p>다만 침의 효과를 관문조절설 하나로 모두 설명할 수는 없습니다.</p>
+
+    <h2 id="s3">② 몸이 스스로 진통제를 만들도록 합니다</h2>
+    <h3 class="sub-h">내인성 진통물질</h3>
+    <p>우리 몸 안에는 <b>천연 진통제</b>가 있습니다.<br>엔도르핀, 엔케팔린 같은 물질입니다.<br>이런 물질을 <b>내인성 진통물질</b>이라고 합니다.<br>('내인성'은 몸 안에서 만들어진다는 뜻입니다.)</p>
+    <p>1970년대 동물 실험에서, 침으로 통증이 줄어든 상태에서 이 물질들의 작용을 막는 약(날록손)을 주면 침의 진통 효과가 사라졌습니다.<sup>3</sup></p>
+    <p>침의 효과가 기분 탓이 아니라, <b>몸속 진통물질 덕분</b>이라는 뜻입니다.</p>
+    <p>중국의 한지성 교수는 전침의 자극 주파수에 따라 나오는 물질이 다르다는 것도 밝혔습니다.<sup>4</sup></p>
+    <p>낮은 주파수에서는 엔도르핀·엔케팔린이, 높은 주파수에서는 다이노르핀이 주로 나옵니다.</p>
+    <p>한마디로 요약해서 말씀드리면,</p>
+    <p class="key"><b>침은 진통제를 넣는 것이 아니라,<br>몸이 진통제를 만들도록 깨우는 치료입니다.</b></p>
+    <figure><img src="images/column-6-glow.jpg" alt="엎드려 허리에 침을 맞은 사람의 몸에서 침 자리부터 척추를 따라 뇌까지 빛나는 신경 신호가 퍼져 나가는 모습" width="743" height="557" loading="lazy"><figcaption>침 자극이 신경을 타고 뇌에 전해지면, 몸 안에서 천연 진통제가 퍼져 나갑니다.</figcaption></figure>
+
+    <h2 id="s4">③ 침 맞은 자리에서도 변화가 일어납니다</h2>
+    <p>2010년 학술지 『네이처 뉴로사이언스』에 흥미로운 쥐 실험 연구가 실렸습니다.</p>
+    <p>침을 놓고 돌리면 그 주변 조직에서 <b>아데노신</b>이라는 물질이 늘어나고, 이 물질이 통증을 누그러뜨린다는 것입니다.<sup>5</sup></p>
+    <p>또 침을 놓으면 근육을 싸고 있는 막(근막)과 결합조직이 침에 살짝 감기며 세포에 자극이 전달된다는 가설을 제시한 연구도 있습니다.<sup>6</sup></p>
+    <p>침을 맞을 때 뻐근하고 묵직한 느낌, 한의학에서 말하는 <b>득기(得氣)</b>도 이 현상과 관련이 있다고 봅니다.</p>
+
+    <h2 id="s5">④ 뇌와 몸 전체가 반응합니다</h2>
+    <p>뇌 영상(fMRI) 연구에서는 침을 맞는 동안 통증과 감정을 처리하는 뇌 부위의 활동이 달라지는 모습이 관찰됐습니다.<sup>7</sup></p>
+    <p>2021년에는 과학 학술지 『네이처』에 쥐의 다리 혈자리(족삼리)에 전침을 놓았더니 <b>미주신경–부신 경로</b>가 활성화되어 몸의 염증 반응이 조절되었다는 연구가 실렸습니다.<sup>8</sup></p>
+    <p>침 한 자리의 자극이 신경을 타고 <b>몸 전체의 균형</b>에 영향을 준다는 것.</p>
+    <p>옛 사람들이 "기의 흐름을 돕는다"고 표현한 것을, 지금의 과학은 신경과 물질의 언어로 하나씩 설명해 가고 있는 셈입니다.</p>
+
+    <h2 id="s6">한눈에 정리하면</h2>
+    <figure><img src="images/column-6-summary.jpg" alt="침치료의 원리: 침 자극을 가운데 두고 ① 통증 신호 조절(관문), ② 몸속 진통물질의 작용, ③ 침 놓은 자리의 변화, ④ 뇌·신경 조절의 네 갈래로 나뉜 그림" width="743" height="743" loading="lazy"><figcaption>침치료의 원리</figcaption></figure>
+    <p>이렇게 침 자극에 대한 우리 몸의 반응은 한 가지로만 설명하기 어렵습니다.</p>
+    <p><b>통증 신호의 조절, 몸속 진통물질의 작용, 침 놓은 자리의 변화, 뇌와 신경계의 반응</b> 등이 함께 연구되고 있습니다.</p>
+    <p class="note">위의 번호는 설명을 위한 순서입니다. 이런 반응이 반드시 ①부터 ④까지 차례대로 일어난다는 뜻은 아닙니다.</p>
+
+    <h2 id="s7">다시 그 학생 이야기로 돌아와서,</h2>
+    <p>요즘 그 학생은 침을 맞고 나면 허리가 한결 가볍다고 합니다.</p>
+    <p>이제는 "무협지 같다"는 말 대신<br>"제 몸이 진통제를 만드는 거죠?" 하고 묻습니다.^^</p>
+    <p>침은 몸에 없는 것을 억지로 넣는 치료가 아닙니다.</p>
+    <p class="key"><b>우리 몸이 원래 가진 회복하는 힘을 깨워 주는 치료입니다.</b></p>
+    <p>경락은 옛 사람들의 지도였고,<br>과학은 지금 그 지도를 하나씩 확인해 가는 중입니다.</p>
+    <p class="ps">ps. 질문하는 환자는 늘 반갑습니다. 덕분에 저도 다시 공부하게 되네요.</p>
+    <p class="sign">한의학박사 · 한방재활의학과 전문의 <b>박장우</b></p>
+
+    <details class="refs">
+      <summary>참고문헌{ic("down")}</summary>
+      <ol>
+        <li>NIH Consensus Conference. Acupuncture. <i>JAMA</i>. 1998;280(17):1518-1524. <a href="https://doi.org/10.1001/jama.280.17.1518" target="_blank" rel="noopener">doi:10.1001/jama.280.17.1518</a></li>
+        <li>Melzack R, Wall PD. Pain mechanisms: a new theory. <i>Science</i>. 1965;150(3699):971-979. <a href="https://doi.org/10.1126/science.150.3699.971" target="_blank" rel="noopener">doi:10.1126/science.150.3699.971</a></li>
+        <li>Pomeranz B, Chiu D. Naloxone blockade of acupuncture analgesia: endorphin implicated. <i>Life Sciences</i>. 1976;19(11):1757-1762. <a href="https://doi.org/10.1016/0024-3205(76)90084-9" target="_blank" rel="noopener">doi:10.1016/0024-3205(76)90084-9</a></li>
+        <li>Han JS. Acupuncture: neuropeptide release produced by electrical stimulation of different frequencies. <i>Trends in Neurosciences</i>. 2003;26(1):17-22. <a href="https://doi.org/10.1016/s0166-2236(02)00006-1" target="_blank" rel="noopener">doi:10.1016/s0166-2236(02)00006-1</a></li>
+        <li>Goldman N, Chen M, Fujita T, et al. Adenosine A1 receptors mediate local anti-nociceptive effects of acupuncture. <i>Nature Neuroscience</i>. 2010;13(7):883-888. <a href="https://doi.org/10.1038/nn.2562" target="_blank" rel="noopener">doi:10.1038/nn.2562</a></li>
+        <li>Langevin HM, Churchill DL, Cipolla MJ. Mechanical signaling through connective tissue: a mechanism for the therapeutic effect of acupuncture. <i>FASEB Journal</i>. 2001;15(12):2275-2282. <a href="https://doi.org/10.1096/fj.01-0015hyp" target="_blank" rel="noopener">doi:10.1096/fj.01-0015hyp</a></li>
+        <li>Hui KK, Liu J, Makris N, et al. Acupuncture modulates the limbic system and subcortical gray structures of the human brain: evidence from fMRI studies in normal subjects. <i>Human Brain Mapping</i>. 2000;9(1):13-25. <a href="https://doi.org/10.1002/(SICI)1097-0193(2000)9:1%3C13::AID-HBM2%3E3.0.CO;2-F" target="_blank" rel="noopener">doi:10.1002/(SICI)1097-0193(2000)9:1&lt;13::AID-HBM2&gt;3.0.CO;2-F</a></li>
+        <li>Liu S, Wang Z, Su Y, et al. A neuroanatomical basis for electroacupuncture to drive the vagal-adrenal axis. <i>Nature</i>. 2021;598(7882):641-645. <a href="https://doi.org/10.1038/s41586-021-04001-4" target="_blank" rel="noopener">doi:10.1038/s41586-021-04001-4</a></li>
+      </ol>
+    </details>
+  </div>
+
+  <aside class="ccta" aria-label="진료 안내">
+    <div class="ccta-top"><img src="images/c9de5ada.png" alt="" width="220" height="220"><div><b>정관고려한의원 진료 안내</b><p>예약 없이 방문하세요. {ADDR}</p></div></div>
+    <div class="acts"><a class="btn-gold" href="{TEL_HREF}">{ic("phone")}전화 문의 {TEL}</a><a class="btn-line" href="index.html#hours">진료시간</a></div>
+  </aside>
+
+  <p class="src-link"><a href="https://blog.naver.com/jgkorea8275/224480664949" target="_blank" rel="noopener">네이버 블로그에서 원문 보기{ic("ext")}</a></p>
+
+  <div class="tools">
+    <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+    <div class="r">
+      <button type="button" data-share>{ic("share")}공유하기</button>
+      <button type="button" data-font aria-label="글자 크기: 보통"><span class="ga" aria-hidden="true">가</span>글자 크기</button>
+    </div>
+  </div>
+
+  <nav class="related" aria-label="함께 보기">
+    <h2>함께 보기</h2>
+    <ul>
+      <li><a href="column-2.html">칼럼 · 근육통 회복 속도를 결정하는 네가지 요인{ic("chev")}</a></li>
+      <li><a href="column-5.html">칼럼 · 자고 일어났더니 목이 안 돌아가요{ic("chev")}</a></li>
+      <li><a href="essay-4.html">에세이 · 불은 그대로인데 사이렌만 끄고 있지는 않습니까?{ic("chev")}</a></li>
+      <li><a href="index.html#treatment">치료 방법 · 침과 전침{ic("chev")}</a></li>
+    </ul>
+  </nav>
+</main>
+{footer()}
+{dock('index.html')}
+<script src="assets/site.js?v={VER}"></script>
+{ANALYTICS}
+</body>
+</html>
+'''
+    return head + '\n' + body
+
 def v2(html):
     html = html.replace('<body class="has-dock" id="top">', '<body class="v2" id="top">')
     a = '<body class="has-dock">'
@@ -1902,6 +2103,9 @@ def v2(html):
 # ---------------------------------------------------------------- RSS (네이버·검색엔진용 새 글 목록)
 SITE = 'https://jgkorea8275.co.kr/'
 POSTS = [  # 최신 글이 위로. 새 칼럼·에세이를 올리면 여기에 한 줄 추가
+    {'url': 'column-6.html', 'title': '침 치료 원리, 과학적으로 쉽게 설명드립니다 (관문조절설, 엔도르핀, 전침)', 'date': 'Tue, 17 Nov 2026 15:50:00 +0900', 'cat': '칼럼',
+     'desc': '"원장님, 침은 어떻게 해서 낫는 거예요?" 관문조절설, 몸속 진통물질(엔도르핀), 침 자리의 변화, 뇌·신경 조절까지 침 치료의 원리를 쉽게 풀었습니다.',
+     'img': 'images/column-6-hero.jpg'},
     {'url': 'column-5.html', 'title': '자고 일어났더니 목이 안 돌아가요 — 목 담결림(낙침) 원인, 경과, 침치료, 주의사항', 'date': 'Tue, 10 Nov 2026 23:05:00 +0900', 'cat': '칼럼',
      'desc': '자고 일어났더니 목이 안 돌아가는 목 담결림(낙침). 원인 네 가지와 자연경과·침치료 경과, 빨리 회복하는 법, 바로 진료가 필요한 경우를 정리했습니다.',
      'img': 'images/column-5-hero.jpg'},
@@ -1975,5 +2179,6 @@ if __name__ == '__main__':
     open(os.path.join(OUT, 'column-2.html'), 'w').write(v2(column2()))
     open(os.path.join(OUT, 'column-3.html'), 'w').write(v2(column3()))
     open(os.path.join(OUT, 'column-5.html'), 'w').write(v2(column5()))
+    open(os.path.join(OUT, 'column-6.html'), 'w').write(v2(column6()))
     open(os.path.join(OUT, 'rss.xml'), 'w').write(rss())
     print('built')
