@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261117'
+VER = '20261120'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -411,6 +411,15 @@ def index():
       <a class="btn-dark" href="{BLOG}" target="_blank" rel="noopener" style="margin-top:22px">블로그에서 더 보기{ic("chev")}</a>
     </div>
     <div class="col-list">
+    <a class="colcard" href="column-7.html">
+      <img src="images/column-7-hero.jpg" alt="얼굴 떨림·저림 · 얼굴이 떨리고 저릴 때" width="743" height="743" loading="lazy">
+      <div class="body">
+        <span class="chip">칼럼 · 얼굴 떨림·저림</span>
+        <h3>얼굴이 떨리고 저릴 때, 걱정해야 할까요? (눈꺼풀 떨림, 안면경련, 구안와사, 뇌졸중 신호)</h3>
+        <p>대부분은 피곤해서 생기는 떨림이지만, 서둘러야 할 신호도 있습니다. 걱정하지 않아도 될 떨림과 바로 119를 불러야 할 신호를 구분해 정리했습니다.</p>
+        <time datetime="2026-11-19">2026.11.19</time>
+      </div>
+    </a>
     <a class="colcard" href="column-6.html">
       <img src="images/column-6-hero.jpg" alt="침 치료 원리 · 침은 어떻게 통증을 줄일까요?" width="743" height="743" loading="lazy">
       <div class="body">
@@ -2084,6 +2093,265 @@ def column6():
 '''
     return head + '\n' + body
 
+COL7_URL = 'https://jgkorea8275.co.kr/column-7.html'
+COL7_TITLE = '얼굴이 떨리고 저릴 때, 걱정해야 할까요? (눈꺼풀 떨림, 안면경련, 구안와사, 뇌졸중 신호)'
+COL7_LD = {"@context": "https://schema.org", "@type": "Article", "headline": "얼굴이 떨리고 저릴 때, 걱정해야 할까요? (눈꺼풀 떨림, 안면경련, 구안와사, 뇌졸중 신호)", "datePublished": "2026-11-19", "image": ["https://jgkorea8275.co.kr/images/column-7-hero.jpg"], "mainEntityOfPage": "https://jgkorea8275.co.kr/column-7.html", "author": {"@type": "Person", "name": "박장우", "jobTitle": "한의학박사, 한방재활의학과 전문의"}, "publisher": {"@type": "Organization", "name": "정관고려한의원", "logo": {"@type": "ImageObject", "url": "https://jgkorea8275.co.kr/favicon.png"}}}
+COL7_CRUMB = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "정관고려한의원", "item": "https://jgkorea8275.co.kr/"},
+    {"@type": "ListItem", "position": 2, "name": "칼럼 및 에세이", "item": "https://jgkorea8275.co.kr/#column"},
+    {"@type": "ListItem", "position": 3, "name": "얼굴이 떨리고 저릴 때, 걱정해야 할까요?", "item": "https://jgkorea8275.co.kr/column-7.html"}]}
+
+def column7():
+    title = COL7_TITLE.replace('"', '&quot;')
+    title_plain = title
+    title_attr = title
+    desc = '눈꺼풀 떨림부터 반측성 안면경련, 구안와사, 삼차신경통, 대상포진, 뇌졸중 신호까지. 걱정하지 않아도 될 떨림과 바로 119를 불러야 할 신호를 구분해 정리했습니다.'
+    toc = [('s1', '먼저 결론부터'), ('s2', "얼굴에는 두 종류의 '전깃줄'이 있습니다"), ('s3', '떨릴 때'), ('s4', '얼굴 한쪽이 굳을 때'),
+           ('s5', '저리거나 아플 때'), ('s6', '실제로 떨리는 것과 떨리는 느낌만 있는 것은 다릅니다'), ('s7', '이럴 땐 망설이지 마세요'),
+           ('s8', '한의학에서는 어떻게 볼까요'), ('s9', '집에서 해 볼 수 있는 것'), ('s10', '한눈에 정리'), ('s11', '마치며')]
+    chk = lambda t: f'<li>{ic("check")}<span>{t}</span></li>'
+    toc_html = ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in toc)
+    head = f'''<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{title_plain} | 칼럼 | 정관고려한의원</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{desc}">
+<meta name="theme-color" content="#171511">
+<link rel="canonical" href="{COL7_URL}">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="alternate" type="application/rss+xml" title="정관고려한의원 칼럼·에세이" href="https://jgkorea8275.co.kr/rss.xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="정관고려한의원">
+<meta property="og:title" content="{title_attr} | 정관고려한의원 칼럼">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{COL7_URL}">
+<meta property="og:image" content="https://jgkorea8275.co.kr/images/column-7-hero.jpg">
+<meta property="og:image:width" content="743">
+<meta property="og:image:height" content="743">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jgkorea8275.co.kr/images/column-7-hero.jpg">
+<meta property="article:published_time" content="2026-11-19">
+<script type="application/ld+json">{json.dumps(COL7_LD, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(COL7_CRUMB, ensure_ascii=False)}</script>
+{FONTS}
+<link rel="stylesheet" href="assets/site.css?v={VER}">
+</head>'''
+
+    body = f'''<body class="has-dock">
+{SPRITE}
+{header('index.html')}
+<div class="cbanner">
+  <img src="images/column-banner.jpg" alt="" width="1600" height="900">
+  <div class="wrap"><p class="ttl">건강 칼럼</p><p>진료실에서 자주 받는 질문을 쉽게 풀어 씁니다.</p></div>
+</div>
+<main class="art column">
+  <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+  <header class="art-head">
+    <span class="chip">칼럼 · 얼굴 떨림·저림</span>
+    <h1>{title}</h1>
+    
+    <p class="art-meta"><span><time datetime="2026-11-19">2026.11.19</time></span><span>정관고려한의원 건강 칼럼</span></p>
+  </header>
+
+  <section class="sum" aria-labelledby="sum-h">
+    <h2 id="sum-h">이 글에서 알 수 있는 내용</h2>
+    <ul>
+      {chk('걱정하지 않아도 되는 떨림과 진료가 필요한 떨림')}
+      {chk('저리고 아플 때 원인을 알려 주는 단서')}
+      {chk('바로 119를 불러야 하는 뇌졸중 신호')}
+    </ul>
+    <details class="toc"><summary>목차 보기{ic("down")}</summary><ol>{toc_html}</ol></details>
+  </section>
+
+  <div class="prose" data-size="0">
+    <figure><img src="images/column-7-hero.jpg" alt="얼굴 떨림·저림 · “원장님, 눈 밑이 며칠째 떨려요” 얼굴이 떨리고 저릴 때 · 얼굴 떨림·저림, 걱정할 떨림과 서두를 신호" width="743" height="743"></figure>
+
+    <p>눈 밑이 저 혼자 파르르 떨린 적 있으신가요?<br>얼굴 한쪽이 내 살 같지 않고 멍한 느낌이 든 적은요?</p>
+    <figure><img src="images/column-7-mirror.jpg" alt="거울 앞에서 눈 밑을 손가락으로 짚으며 걱정스러운 얼굴로 들여다보는 여성" width="743" height="499" loading="lazy"></figure>
+    <p>이런 증상이 생기면 두 가지 마음이 듭니다.<br>"설마 큰 병인가?" 하는 걱정, 그리고 "피곤해서 그렇겠지" 하는 방심입니다.</p>
+    <p>진료실에서는 두 경우를 모두 자주 봅니다.<br>걱정하지 않아도 될 분은 너무 걱정하시고, 서둘러야 할 분은 너무 늦게 오시는 경우가 많습니다.</p>
+    <p>오늘은 그 둘을 구분하는 법을 쉽게 정리해 드리겠습니다.</p>
+
+    <h2 id="s1">먼저 결론부터</h2>
+    <p><b>얼굴 떨림은 대부분 피곤해서 생깁니다.</b><br>푹 자고 쉬면 대개 저절로 좋아지는 경우가 많습니다.</p>
+    <p class="key alert">하지만,<br><b>얼굴이 갑자기 한쪽으로 처지거나<br>말이 어눌해지거나<br>팔다리에 힘이 빠지면</b><br>뇌졸중의 신호일 수 있으니 기다리지 마시고 <b>바로 119</b>를 부르시기 바랍니다.</p>
+
+    <h2 id="s2">얼굴에는 두 종류의 '전깃줄'이 있습니다</h2>
+    <p>우리 얼굴에는 뇌에서 나온 신경이 전깃줄처럼 퍼져 있습니다.<br>그 중 중요한 두 신경이 있습니다.</p>
+    <figure class="tall"><img src="images/column-7-nerves.jpg" alt="얼굴에는 두 종류의 ‘전깃줄’이 있습니다: 안면신경은 얼굴을 ‘움직이게’ 하는 줄로 문제가 생기면 떨림·마비, 삼차신경은 얼굴을 ‘느끼게’ 하는 줄로 문제가 생기면 저림·찌릿한 통증" width="743" height="966" loading="lazy"></figure>
+    <p><b>하나는 얼굴을 '움직이게' 하는 줄, 안면신경입니다.</b><br>눈을 감고, 웃고, 입을 오므리는 일을 합니다.<br>이 줄에 전기가 제멋대로 흐르면 얼굴이 떨리고, 전기가 잘 안 흐르면 얼굴이 마비됩니다.</p>
+    <p><b>다른 하나는 얼굴을 '느끼게' 하는 줄, 삼차신경입니다.</b><br>손이 닿는 느낌, 뜨겁고 차가운 느낌, 아픈 느낌을 뇌로 전해 줍니다.<br>이 줄에 문제가 생기면 저리거나, 멍하거나, 찌릿하게 아픕니다.</p>
+    <p>그러니까 간단히 말해,</p>
+    <p class="key"><b>"떨린다"는 안면신경의 이야기,<br>"저리다·아프다"는 삼차신경의 이야기입니다.</b></p>
+    <p class="note">(물론 모든 얼굴떨림과 저림이 이 두 신경 자체의 문제로 생기는 것만은 아닙니다.)</p>
+
+    <h2 id="s3">떨릴 때</h2>
+    <h3 class="factor"><span>① 눈 밑이나 눈꺼풀만 파르르 떨린다면</span></h3>
+    <p>가장 흔한 경우이고, 걱정하지 않으셔도 됩니다.<br>의학적으로는 <b>안검근파동증(눈꺼풀 떨림)</b>이라고 부릅니다.</p>
+    <p>잠을 못 잤거나, 신경 쓸 일이 많거나, 커피를 많이 마셨거나, 휴대폰을 오래 보셨을 때 잘 생깁니다.<br>몸이 "좀 쉬어 달라"고 보내는 신호입니다.</p>
+    <figure><img src="images/column-7-rest.jpg" alt="밤늦게 침대에서 휴대폰을 보는 피곤한 여성과, 소파에 기대어 따뜻한 수건을 눈에 얹고 쉬는 여성의 두 장면" width="743" height="415" loading="lazy"></figure>
+    <p>눈꺼풀 일부가 파르르 떨리다가 멈추기를 반복합니다.<br>본인은 심하게 떨리는 것 같지만, 다른 사람이 보기에는 잘 보이지 않을 정도로 미세한 경우도 많습니다.<br>보통 <b>며칠, 길면 몇 주 안에 저절로 멈춥니다.</b><sup>1</sup></p>
+    <p>영양제를 찾기보다 잠을 충분히 자고 커피를 줄이고, 눈을 쉬게 해주는 것이 좋습니다.</p>
+    <div class="qbox">
+      <p class="qbox-h">눈꺼풀이 떨리면 마그네슘이 부족한 걸까요?</p>
+      <p>눈꺼풀이 떨리면 마그네슘을 드시는 분들이 많습니다.<br>마그네슘은 신경과 근육이 정상적으로 움직이는 데 필요한 영양소입니다.</p>
+      <p>실제로 심하게 부족하면 근육이 떨리거나 경련이 생길 수 있습니다.<br>하지만 건강한 사람에게 나타나는 일시적인 눈꺼풀 떨림이 대부분 마그네슘 부족 때문이라는 근거는 부족합니다.</p>
+      <p>오히려 <b>피로, 수면 부족, 스트레스, 카페인 섭취</b> 등이 더 흔하게 관련됩니다.</p>
+      <p>따라서 눈꺼풀이 떨린다고 무조건 마그네슘 영양제부터 드실 필요는 없습니다.</p>
+    </div>
+
+    <h3 class="factor"><span>② 눈에서 볼, 입꼬리까지 번진다면</span></h3>
+    <p>이때는 이야기가 다릅니다.<br>처음에는 눈가만 떨리다가 점점 볼과 입꼬리까지, <b>얼굴 한쪽이 통째로 실룩거립니다.</b><br>몇 달이 지나도 나아지지 않고 점점 심해질 수 있습니다.<br>이것을 <b>반쪽얼굴연축(반측성 안면경련)</b>이라고 합니다.</p>
+    <p>대부분은 머릿속에서 혈관이 안면신경을 꾹 누르고 있어서 생깁니다.<sup>2</sup><br>전깃줄을 계속 눌러 스파크가 튀는 것과 비슷합니다.<br>그래서 자고 쉬어서 풀리는 문제가 아닙니다.</p>
+    <p><b>신경과에서 진찰을 받고, 필요하면 MRI 검사로 원인을 확인하는 것이 먼저입니다.</b><br>증상에 따라 보톡스 주사나 혈관을 신경에서 떼어 놓는 수술(미세혈관감압술)로 좋아질 수 있습니다.</p>
+    <figure class="tall"><img src="images/column-7-spread.jpg" alt="떨림, 어디까지 번지는지 보세요: 눈 밑에서만 파르르 떨리면 대부분 피로 신호(안검근파동증)로 푹 쉬면 대개 멈추고, 눈에서 볼, 입꼬리까지 한쪽으로 번지면 반측성 안면경련 가능성이 있어 신경과 진료가 먼저입니다" width="743" height="966" loading="lazy"></figure>
+    <p><b>기억하실 점은 한 가지입니다.</b></p>
+    <p>눈꺼풀만 가끔 떨린다면 대부분 피로와 관련이 있지만, 떨림이 오래 지속되거나 심해지고 같은 쪽 입 주변까지 번진다면 신경과 진료를 받아보는 것이 좋습니다.</p>
+
+    <h2 id="s4">얼굴 한쪽이 굳을 때</h2>
+    <h3 class="factor"><span>귀 뒤가 아프고, 얼굴이 먹먹하고, 맛이 이상하다면</span></h3>
+    <p>흔히 '입이 돌아간다'고 하는 <b>구안와사(안면신경마비)</b>를 생각해 볼 수 있습니다.<br>그 중 뚜렷한 원인이 확인되지 않는 경우를 '벨마비'라고 합니다.</p>
+    <p>귀 뒤 통증, 얼굴이 먹먹한 느낌, 맛이 이상한 느낌이 하루 이틀 먼저 오고, 그 뒤에 한쪽 눈이 잘 안 감기고 물을 마시면 입가로 새는 일이 생깁니다.</p>
+    <p class="key">안면신경마비는<br><b>증상이 시작되고 72시간(3일) 안에<br>병원에서 스테로이드 치료를 시작하는 것</b>이<br>회복에 가장 중요합니다.<sup>5,6</sup></p>
+    <p>저는 평소 스테로이드를 되도록 피하자고 말씀드리는 편이지만, 이 경우만큼은 꼭 필요한 치료입니다.</p>
+    <p>다만 갑자기 얼굴이 마비되었다면 벨마비인지 뇌졸중인지 먼저 구별해야 합니다.<br>스스로 판단하지 마시고 신속하게 진료를 받으시기 바랍니다.</p>
+    <p>침치료 등은 환자의 상태에 따라 병원 치료와 함께 보조적으로 고려할 수 있습니다.</p>
+
+    <h2 id="s5">저리거나 아플 때</h2>
+    <p>감각이 이상할 때는 <b>'어떻게' 이상한지</b>가 원인을 알려 주는 단서입니다.</p>
+    <h3 class="factor"><span>① 찌릿! 전기 오듯 몇 초간 아프다면</span></h3>
+    <p>세수하거나, 양치하거나, 찬바람을 맞을 때 얼굴에 전기가 튀는 것처럼 확 아팠다가 멈춥니다.<br>삼차신경이 예민해져서 생기는 <b>삼차신경통</b>일 수 있습니다.<br>자꾸 반복되면 진료를 받으시기 바랍니다.<sup>3</sup></p>
+    <h3 class="factor"><span>② 화끈·따끔하다가 물집이 생겼다면</span></h3>
+    <p><b>대상포진</b>일 수 있습니다.<br>몸의 면역력이 떨어졌을 때 얼굴 한쪽에 잘 생깁니다.<br>얼굴 대상포진은 대부분 삼차신경을 따라 생기고, 특히 이마와 눈 주변에 많습니다.<br>물집이 보이기 전에 따갑고 아픈 느낌만 먼저 오기도 해서 처음엔 다른 병으로 오해하기 쉽습니다.</p>
+    <p>대상포진은 가능한 한 빨리 진료를 받아 항바이러스제 치료가 필요한지 확인하는 것이 좋습니다.</p>
+    <p>특히 눈 근처나 코끝에 물집이 생겼다면 눈에도 영향을 줄 수 있으므로 신속한 진료가 필요합니다.</p>
+    <p>귀 주변에 물집이 생기면서 얼굴까지 마비되는 경우(람세이헌트 증후군, 안면신경 쪽에 생기는 경우)<sup>4</sup>도 있어 서둘러야 합니다.</p>
+    <h3 class="factor"><span>③ 검사는 괜찮다는데 은근히 저리다면</span></h3>
+    <p>검사를 받아도 특별한 원인이 발견되지 않는 경우가 있습니다.<br><b>스트레스가 심하거나, 숨을 지나치게 빠르게 쉬거나, 턱 주변 근육이 긴장</b>되어 있을 때도 얼굴이 얼얼하거나 불편한 느낌이 들 수 있습니다.</p>
+    <p>다만 한쪽 얼굴의 감각이 실제로 떨어지거나 증상이 계속된다면 다시 진료를 받아보는 것이 좋습니다.</p>
+
+    <h2 id="s6">실제로 떨리는 것과 떨리는 느낌만 있는 것은 다릅니다</h2>
+    <p>환자분들은 두 경우를 모두 "얼굴이 떨린다"고 표현하기도 합니다.<br>하지만 자세히 살펴보면 차이가 있습니다.</p>
+    <p><b>첫 번째는 실제로 근육이 움직이는 경우입니다.</b></p>
+    <p>눈꺼풀이나 입꼬리가 파르르 움직이거나 씰룩거립니다.<br>이때는 근육을 움직이는 신경의 문제를 먼저 생각합니다.</p>
+    <p><b>두 번째는 겉으로 움직임이 없는데 떨리는 느낌만 있는 경우입니다.</b></p>
+    <p>피부 아래에서 무언가 꿈틀거리거나 전기가 흐르는 듯한 느낌이 들기도 합니다.<br>이런 경우에는 아주 미세한 근육 떨림일 수도 있고, 감각신경에서 생긴 이상한 느낌일 수도 있습니다.</p>
+    <p>따라서 실제 근육이 움직이는지, 단지 그런 느낌만 있는지를 구별하는 것이 중요합니다.<br>증상이 나타날 때 휴대전화로 짧은 영상을 찍어두면 진료에 도움이 될 수 있습니다.</p>
+
+    <h2 id="s7">이럴 땐 망설이지 마세요</h2>
+    <p>이 글에서 가장 중요한 부분입니다.<br>아래 중 하나라도 <b>갑자기</b> 생겼다면, 내일 병원 갈 일이 아닙니다.<br><b>지금 바로 119입니다.</b></p>
+    <figure class="tall"><img src="images/column-7-stroke.jpg" alt="이런 증상이 갑자기 생기면 바로 119: ① “이~” 하고 웃어 보기 — 얼굴 한쪽이 처지거나 입꼬리가 비뚤어진다, ② 두 팔 앞으로 들기 — 한쪽 팔이 스르르 내려간다, ③ 말해 보기 — 말이 꼬이거나 하고 싶은 말이 안 나온다. 증상이 시작된 시각을 꼭 기억해 두세요" width="743" height="1329" loading="lazy"></figure>
+    <ul class="checks">
+      <li>{ic("check")}<span>얼굴 한쪽이 갑자기 처지거나 입꼬리가 비뚤어진다.</span></li>
+      <li>{ic("check")}<span>한쪽 팔이나 다리에 힘이 빠진다.</span></li>
+      <li>{ic("check")}<span>말이 어눌해지거나 말을 이해하기 어렵다.</span></li>
+      <li>{ic("check")}<span>한쪽 얼굴의 감각이 갑자기 둔해진다.</span></li>
+      <li>{ic("check")}<span>갑자기 한쪽 눈이 잘 안 보이거나, 물체가 두 개로 보인다.</span></li>
+      <li>{ic("check")}<span>갑자기 걷기 어려울 정도로 어지럽거나 극심한 두통이 생긴다.</span></li>
+    </ul>
+    <p>이런 증상은 <b>뇌졸중(중풍)</b>의 신호일 수 있습니다.<br>뇌졸중은 뇌혈관이 막히거나 터져서 뇌의 기능에 문제가 생기는 질환입니다.</p>
+    <p>특히 뇌혈관이 막힌 경우에는 정해진 시간 안에 치료를 시작해야 효과를 기대할 수 있는 치료들이 있습니다.<sup>7</sup><br>따라서 빨리 병원에 도착하는 것이 중요합니다.</p>
+    <p>119에 연락할 때는 증상이 언제 시작되었는지, 마지막으로 정상이었던 시각이 언제인지 알려주시기 바랍니다.</p>
+    <figure><img src="images/column-7-call.jpg" alt="소파에 앉은 노인이 두 팔을 앞으로 들었는데 한쪽 팔이 내려가고, 옆에서 가족이 노인의 어깨를 짚으며 전화로 119에 연락하는 두 장면" width="743" height="415" loading="lazy"></figure>
+    <p>또 한 가지 기억하실 점이 있습니다.</p>
+    <p><b>갑자기 한쪽 얼굴의 감각만 둔해졌더라도 뇌졸중일 가능성을 배제할 수 없습니다.</b><br>몇 분 뒤 정상으로 돌아왔다고 안심해서도 안 됩니다.<br>뇌혈관이 일시적으로 막혔다가 다시 뚫리는 현상(TIA)일 수도 있기 때문입니다.<br>이런 경우는 앞으로 뇌졸중이 발생할 위험을 알리는 경고 신호가 될 수 있습니다.</p>
+
+    <h2 id="s8">한의학에서는 어떻게 볼까요</h2>
+    <p>한의학에서는 떨리고, 저리고, 갑자기 생기는 증상을 바람에 빗대어 <b>풍(風)</b>이라고 불렀습니다.<br>바람이 나뭇잎을 흔들 듯, 몸의 기운이 흔들리면 얼굴이 떨리고 저리다고 본 것이죠.<br>그 바탕에는 몸이 지쳐서 근육과 신경에 영양이 충분히 가지 못하는 상태, 즉 기혈(氣血, 몸의 기운과 혈액)이 부족한 상태로 보기도 합니다.</p>
+    <p>솔직하게 말씀드리면, 위에서 "바로 119", "신경과 진료"라고 적은 경우는 그쪽이 먼저입니다.</p>
+    <p>그렇다면 한의학적 치료는 언제 도움이 될까요?</p>
+    <h3 class="sub-h">피곤해서 오는 떨림과 저림</h3>
+    <p>수면 상태와 피로, 스트레스 등을 살펴보고 필요에 따라 침치료나 생활관리를 보조적으로 고려할 수 있습니다.</p>
+    <h3 class="sub-h">구안와사가 회복되는 동안</h3>
+    <p>필요한 병원 치료를 받으면서 침치료 등을 함께 합니다.</p>
+    <h3 class="sub-h">검사는 괜찮은데 계속 불편할 때</h3>
+    <p>몸 상태와 생활습관을 함께 살펴보고, 증상을 악화시키는 요인이 있는지 확인합니다.<br>다만 증상이 지속되거나 악화된다면 추가 검사가 필요한지 다시 판단해야 합니다.</p>
+    <figure><img src="images/column-7-acu.jpg" alt="침대에 편안히 누운 여성의 얼굴에 흰 가운을 입은 한의사가 가는 침을 놓는 모습" width="743" height="499" loading="lazy"></figure>
+    <p>얼굴에 침을 맞는다고 하면 겁이 나실 수 있는데요.<br>머리카락만큼 가는 침을 쓰기 때문에 생각보다 훨씬 덜 아픕니다.</p>
+
+    <h2 id="s9">집에서 해 볼 수 있는 것</h2>
+    <p>단순한 눈꺼풀 떨림이라면 다음과 같은 생활관리가 도움이 될 수 있습니다.</p>
+    <ul class="checks">
+      <li>{ic("check")}<span><b>잠 충분히 자기</b> — 수면 부족은 눈꺼풀 떨림의 흔한 유발 요인입니다.</span></li>
+      <li>{ic("check")}<span><b>커피 줄이기</b> — 카페인을 많이 마신다면 섭취량을 줄여보세요.</span></li>
+      <li>{ic("check")}<span><b>눈 쉬게 하기</b> — 휴대전화나 컴퓨터를 오래 사용했다면 중간중간 쉬어주세요.</span></li>
+      <li>{ic("check")}<span><b>스트레스 관리하기</b> — 충분한 휴식과 규칙적인 생활이 도움이 됩니다.</span></li>
+      <li>{ic("check")}<span><b>증상 기록하기</b> — 언제, 어느 부위가, 얼마나 오래 떨리거나 저렸는지 적어두세요.</span></li>
+    </ul>
+    <p>단, 갑작스러운 얼굴 감각저하나 마비가 나타났다면 이런 방법으로 기다리지 말고 즉시 진료를 받아야 합니다.</p>
+
+    <h2 id="s10">한눈에 정리</h2>
+    <div class="tbl-wrap"><table class="tbl tbl-sm sum">
+      <thead><tr><th scope="col">이럴 때</th><th scope="col">생각할 것</th><th scope="col">이렇게</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">눈꺼풀만 가끔 파르르</th><td>피로·잠 부족·커피<br>(안검근파동증)</td><td>푹 쉬기.<br>한 달 넘게 가면 진료</td></tr>
+        <tr><th scope="row">떨림이 얼굴 한쪽으로 번짐</th><td>반측성 안면경련</td><td>신경과 진료</td></tr>
+        <tr><th scope="row">전기 오듯 몇 초간 찌릿</th><td>삼차신경통</td><td>반복되면 진료</td></tr>
+        <tr><th scope="row">화끈·따끔하다가 물집</th><td>대상포진</td><td>바로 진료</td></tr>
+        <tr><th scope="row">귀 뒤 통증 후 눈·입이 한쪽만 안 움직임</th><td>구안와사<br>(안면신경마비)</td><td>3일 안에 병원<br>(스테로이드 치료)</td></tr>
+        <tr class="hot"><th scope="row">갑자기 얼굴이 처지거나, 한쪽 얼굴의 감각이 둔해지거나, 말이 어눌해지거나 팔다리에 힘이 빠짐</th><td>뇌졸중(중풍) 가능성</td><td><b>바로 119</b></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="s11">마치며</h2>
+    <p>얼굴이 떨리거나 저린다고 해서 모두 큰 병은 아닙니다.</p>
+    <p>하지만 떨림이 점점 심해지거나, 얼굴의 감각이 갑자기 둔해지거나, 얼굴마비와 말이 어눌해지는 증상이 나타난다면 그냥 넘기지 마세요.</p>
+    <p>중요한 것은 무조건 걱정하는 것도, 무조건 참는 것도 아닙니다.</p>
+    <p class="key"><b>어떤 증상인지 구별하고, 필요한 때에 진료를 받는 것입니다.</b></p>
+    <p class="sign">한의학박사 · 한방재활의학과 전문의 <b>박장우</b></p>
+
+    <details class="refs">
+      <summary>참고문헌{ic("down")}</summary>
+      <ol>
+        <li>Barmettler A, et al. Eyelid myokymia: not always benign. <i>Orbit</i>. 2011;30(6):289-90.</li>
+        <li>Lu AY, et al. Hemifacial spasm and neurovascular compression. <i>ScientificWorldJournal</i>. 2014;2014:349319.</li>
+        <li>Cruccu G, et al. Trigeminal neuralgia: New classification and diagnostic grading. <i>Neurology</i>. 2016;87(2):220-8.</li>
+        <li>Sweeney CJ, Gilden DH. Ramsay Hunt syndrome. <i>J Neurol Neurosurg Psychiatry</i>. 2001;71(2):149-54.</li>
+        <li>Baugh RF, et al. Clinical practice guideline: Bell's palsy. <i>Otolaryngol Head Neck Surg</i>. 2013;149(3 Suppl):S1-27.</li>
+        <li>Madhok VB, et al. Corticosteroids for Bell's palsy. <i>Cochrane Database Syst Rev</i>. 2016;7:CD001942.</li>
+        <li>Powers WJ, et al. Guidelines for the Early Management of Acute Ischemic Stroke: 2019 Update. <i>Stroke</i>. 2019;50(12):e344-e418.</li>
+      </ol>
+    </details>
+  </div>
+
+  <aside class="ccta" aria-label="진료 안내">
+    <div class="ccta-top"><img src="images/c9de5ada.png" alt="" width="220" height="220"><div><b>정관고려한의원 진료 안내</b><p>예약 없이 방문하세요. {ADDR}</p></div></div>
+    <div class="acts"><a class="btn-gold" href="{TEL_HREF}">{ic("phone")}전화 문의 {TEL}</a><a class="btn-line" href="index.html#hours">진료시간</a></div>
+  </aside>
+
+  <p class="src-link"><a href="https://blog.naver.com/jgkorea8275/224483198255" target="_blank" rel="noopener">네이버 블로그에서 원문 보기{ic("ext")}</a></p>
+
+  <div class="tools">
+    <a class="back" href="index.html#column">{ic("back")}목록으로</a>
+    <div class="r">
+      <button type="button" data-share>{ic("share")}공유하기</button>
+      <button type="button" data-font aria-label="글자 크기: 보통"><span class="ga" aria-hidden="true">가</span>글자 크기</button>
+    </div>
+  </div>
+
+  <nav class="related" aria-label="함께 보기">
+    <h2>함께 보기</h2>
+    <ul>
+      <li><a href="column-6.html">칼럼 · 침 치료 원리, 과학적으로 쉽게 설명드립니다{ic("chev")}</a></li>
+      <li><a href="column-5.html">칼럼 · 자고 일어났더니 목이 안 돌아가요{ic("chev")}</a></li>
+      <li><a href="column-4.html">칼럼 · 자다가 종아리에 쥐가 나요{ic("chev")}</a></li>
+      <li><a href="index.html#treatment">치료 방법 · 침과 전침{ic("chev")}</a></li>
+    </ul>
+  </nav>
+</main>
+{footer()}
+{dock('index.html')}
+<script src="assets/site.js?v={VER}"></script>
+{ANALYTICS}
+</body>
+</html>
+'''
+    return head + '\n' + body
+
 def v2(html):
     html = html.replace('<body class="has-dock" id="top">', '<body class="v2" id="top">')
     a = '<body class="has-dock">'
@@ -2103,6 +2371,9 @@ def v2(html):
 # ---------------------------------------------------------------- RSS (네이버·검색엔진용 새 글 목록)
 SITE = 'https://jgkorea8275.co.kr/'
 POSTS = [  # 최신 글이 위로. 새 칼럼·에세이를 올리면 여기에 한 줄 추가
+    {'url': 'column-7.html', 'title': '얼굴이 떨리고 저릴 때, 걱정해야 할까요? (눈꺼풀 떨림, 안면경련, 구안와사, 뇌졸중 신호)', 'date': 'Thu, 19 Nov 2026 11:38:00 +0900', 'cat': '칼럼',
+     'desc': '눈꺼풀 떨림부터 반측성 안면경련, 구안와사, 삼차신경통, 대상포진, 뇌졸중 신호까지. 걱정하지 않아도 될 떨림과 바로 119를 불러야 할 신호를 구분해 정리했습니다.',
+     'img': 'images/column-7-hero.jpg'},
     {'url': 'column-6.html', 'title': '침 치료 원리, 과학적으로 쉽게 설명드립니다 (관문조절설, 엔도르핀, 전침)', 'date': 'Tue, 17 Nov 2026 15:50:00 +0900', 'cat': '칼럼',
      'desc': '"원장님, 침은 어떻게 해서 낫는 거예요?" 관문조절설, 몸속 진통물질(엔도르핀), 침 자리의 변화, 뇌·신경 조절까지 침 치료의 원리를 쉽게 풀었습니다.',
      'img': 'images/column-6-hero.jpg'},
@@ -2180,5 +2451,6 @@ if __name__ == '__main__':
     open(os.path.join(OUT, 'column-3.html'), 'w').write(v2(column3()))
     open(os.path.join(OUT, 'column-5.html'), 'w').write(v2(column5()))
     open(os.path.join(OUT, 'column-6.html'), 'w').write(v2(column6()))
+    open(os.path.join(OUT, 'column-7.html'), 'w').write(v2(column7()))
     open(os.path.join(OUT, 'rss.xml'), 'w').write(rss())
     print('built')
