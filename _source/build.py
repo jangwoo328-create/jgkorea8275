@@ -27,7 +27,7 @@ KAKAO_EMBED = '''<div class="kmap" id="kmap" aria-label="카카오맵 – 손가
           </script>
         </div>'''
 BLOG = 'https://blog.naver.com/jgkorea8275'
-VER = '20261125'
+VER = '20261125b'
 
 # ---------------------------------------------------------------- icons
 SPRITE = '''<svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -142,8 +142,8 @@ def dock(prefix=''):
 </div>'''
 
 # ---------------------------------------------------------------- index
-TV_SPINE = [('칼럼', '허리디스크, 꼭 수술해야 하나요? 치료 기간과 좋아지는 신호', 'column-9.html'),
-            ('칼럼', '요통을 예방하는 습관 3가지 — 오래 앉지 않기, 바른 자세, 체중 관리', 'column-10.html'),
+TV_SPINE = [('칼럼', '허리디스크, 꼭 수술해야 하나요? 치료 기간과 좋아지는 신호', 'column-9.html', '허리디스크'),
+            ('칼럼', '요통을 예방하는 습관 3가지 — 오래 앉지 않기, 바른 자세, 체중 관리', 'column-10.html', '요통예방'),
             ('방송1부', '허리디스크의 진단', 'https://blog.naver.com/jgkorea8275/223447810095'),
             ('방송2부', '허리디스크 수술해야 하나?', 'https://blog.naver.com/jgkorea8275/223450860463'),
             ('방송3부', '허리디스크의 비수술적 치료', 'https://blog.naver.com/jgkorea8275/223450870734'),
@@ -158,12 +158,12 @@ TV_BOYAK = [('방송1부', '오해의 종류와 녹용', 'https://blog.naver.com
             ('방송통합본', '1~4부 한 번에 보기', 'https://blog.naver.com/jgkorea8275/221188922757')]
 TV_BOYAK_SERIES = '[한약에 대한 오해와 진실]'
 def tv_sheet(sid, title, items, series=TV_SPINE_SERIES, kicker='방송 출연분', note='네이버 블로그에서 영상이 열립니다.'):
-    def li(n, t, u):
-        sm = series if isinstance(series, str) else series[n]
+    def li(n, t, u, sm=None):
+        sm = sm or (series if isinstance(series, str) else series[n])
         ext = u.startswith('http')
         tgt = ' target="_blank" rel="noopener"' if ext else ''
         return f'<li><a href="{u}"{tgt}><span class="n{' num' if n.isdigit() else ''}">{n}</span><span class="t"><small>{sm}</small>{t}</span>{ic("ext" if ext else "chev")}</a></li>'
-    lis = ''.join(li(n, t, u) for n, t, u in items)
+    lis = ''.join(li(*it) for it in items)
     return (f'    <dialog class="sheet" id="{sid}" aria-labelledby="{sid}-h"><div class="sheet-in">'
             f'<div class="sheet-hd"><p class="sheet-k">{kicker}</p><h3 id="{sid}-h">{title}</h3>'
             f'<button type="button" class="sheet-x" aria-label="닫기">{ic("x")}</button></div>'
@@ -3312,9 +3312,24 @@ def rss():
 </rss>
 """
 
+def index_fix(html):
+    """메인 페이지만: 네이버 대표 사진 보강 (11-25 다른 대화에서 적용한 내용 유지)"""
+    R = [('<meta name="twitter:image" content="https://jgkorea8275.co.kr/og-image-2.jpg">\n',
+          '<meta name="twitter:image" content="https://jgkorea8275.co.kr/og-image-2.jpg">\n<meta name="thumbnail" content="https://jgkorea8275.co.kr/og-image-2.jpg">\n<link rel="image_src" href="https://jgkorea8275.co.kr/og-image-2.jpg">\n'),
+         ('<a class="brand" href="#top" aria-label="정관고려한의원 홈"><img src="images/2e68b0b4.png" alt="정관고려한의원" width="1359" height="200"></a>',
+          '<a class="brand" href="#top" aria-label="정관고려한의원 홈"><span class="logo-bg" role="img" aria-label="정관고려한의원"></span></a>'),
+         ('<picture><source media="(min-width:1000px)" srcset="images/33607c6a.jpg" width="960" height="640"><img src="images/hero-sign.jpg" alt="정관고려한의원 2층 간판" width="480" height="500" fetchpriority="high"></picture>',
+          '<picture><source media="(max-width:999px)" srcset="images/hero-sign.jpg" width="480" height="500"><img src="images/33607c6a.jpg" alt="정관고려한의원 외관과 2층 간판" width="960" height="640" fetchpriority="high"></picture>'),
+         ('    <img src="images/2e68b0b4.png" alt="정관고려한의원" width="1359" height="200" loading="lazy">',
+          '    <span class="logo-bg" role="img" aria-label="정관고려한의원"></span>')]
+    for a, b in R:
+        assert html.count(a) == 1, a[:60]
+        html = html.replace(a, b)
+    return html
+
 if __name__ == '__main__':
     # 확정안(v2): 대문 전화 바로 연결, 하단 검은 바·떠 있는 메뉴 단추 없음, 로고 키움, 메뉴 글자 표시
-    open(os.path.join(OUT, 'index.html'), 'w').write(v2(index()))
+    open(os.path.join(OUT, 'index.html'), 'w').write(index_fix(v2(index())))
     open(os.path.join(OUT, 'column-1.html'), 'w').write(v2(column1()))
     open(os.path.join(OUT, 'essay-2.html'), 'w').write(v2(essay2()))
     open(os.path.join(OUT, 'essay-3.html'), 'w').write(v2(essay3()))
